@@ -7,14 +7,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(23, 127)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r0du0"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
 bounce = 1.0
 
@@ -66,9 +58,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D2" unique_id=1338340152]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
-
 [node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=1521894954]
 position = Vector2(1462, 862)
 
@@ -78,9 +67,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3" unique_id=263182796]
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D3" unique_id=781938028]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=543270662]
 position = Vector2(1866, 804)
@@ -92,9 +78,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D4" unique_id=1050120119]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
-
 [node name="RigidBody2D5" type="RigidBody2D" parent="." unique_id=863628433]
 position = Vector2(2440, 692)
 
@@ -104,9 +87,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D5" unique_id=1455580136]
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D5" unique_id=1830658969]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
 
 [node name="RigidBody2D6" type="RigidBody2D" parent="." unique_id=1974840484]
 position = Vector2(2734, 794)
@@ -118,9 +98,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D6" unique_id=1281591495]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
-
 [node name="RigidBody2D7" type="RigidBody2D" parent="." unique_id=858365398]
 position = Vector2(3146, 794)
 
@@ -130,9 +107,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D7" unique_id=686303253]
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D7" unique_id=1297489484]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
 
 [node name="RigidBody2D8" type="RigidBody2D" parent="." unique_id=667195627]
 position = Vector2(3670, 852)
@@ -144,9 +118,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D8" unique_id=1671782227]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
-
 [node name="RigidBody2D9" type="RigidBody2D" parent="." unique_id=1870357847]
 position = Vector2(4096, 790)
 
@@ -157,9 +128,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D9" unique_id=1592419467]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
-
 [node name="RigidBody2D10" type="RigidBody2D" parent="." unique_id=497322746]
 position = Vector2(4096, 790)
 
@@ -169,9 +137,6 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D10" unique_id=1253734386]
 scale = Vector2(0.1875, 1)
 texture = ExtResource("3_fos0i")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="RigidBody2D10" unique_id=887925590]
-replication_config = SubResource("SceneReplicationConfig_r0du0")
 
 [node name="Floors" type="Node2D" parent="." unique_id=582684040]
 
