@@ -20,6 +20,7 @@ properties/3/replication_mode = 1
 script = ExtResource("1_jiowd")
 power_multiplier = 9.0
 max_drag = 50.0
+spin_power = 1.0
 
 [node name="Line2D" type="Line2D" parent="." unique_id=666400058]
 width = 3.0
