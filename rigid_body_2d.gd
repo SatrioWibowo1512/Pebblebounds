@@ -7,10 +7,18 @@ extends RigidBody2D
 var is_dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
+
+func _ready() -> void:
+	$Camera2D.enabled = is_multiplayer_authority()
+	if not is_multiplayer_authority():
+		freeze = true
+
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
 		return
-	
+
 	if linear_velocity.length() > stop_threshold:
 		is_dragging = false
 		return
