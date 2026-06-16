@@ -7,14 +7,13 @@ extends RigidBody2D
 var is_dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
-
 func _ready() -> void:
-	$Camera2D.enabled = is_multiplayer_authority()
+	# Kamera hanya aktif untuk batu milik sendiri
+	$Camera2D.enabled = name == str(multiplayer.get_unique_id())
 
 func _input(event: InputEvent) -> void:
-	if not is_multiplayer_authority():
+	# Hanya izinkan input jika ini adalah batu kita sendiri
+	if name != str(multiplayer.get_unique_id()):
 		return
 
 	if linear_velocity.length() > stop_threshold:
@@ -29,4 +28,12 @@ func _input(event: InputEvent) -> void:
 			is_dragging = false
 			var drag_end = get_global_mouse_position()
 			var drag_vector = (drag_start - drag_end).limit_length(max_drag)
-			apply_central_impulse(drag_vector * power_multiplier)
+			
+			# Minta Host (Server dengan ID 1) untuk memberikan dorongan fisika
+			apply_impulse_server.rpc_id(1, drag_vector * power_multiplier)
+
+# Fungsi ini hanya akan dijalankan di komputer Host
+@rpc("any_peer", "call_local", "reliable")
+func apply_impulse_server(impulse: Vector2) -> void:
+	if multiplayer.is_server():
+		apply_central_impulse(impulse)

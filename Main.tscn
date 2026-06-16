@@ -161,7 +161,7 @@ texture = ExtResource("3_fos0i")
 replication_config = SubResource("SceneReplicationConfig_r0du0")
 
 [node name="RigidBody2D10" type="RigidBody2D" parent="." unique_id=497322746]
-position = Vector2(4420, 900)
+position = Vector2(4096, 790)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D10" unique_id=1467959012]
 shape = SubResource("RectangleShape2D_0e48y")
