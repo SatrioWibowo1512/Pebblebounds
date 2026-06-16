@@ -12,8 +12,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	$Camera2D.enabled = is_multiplayer_authority()
-	if not is_multiplayer_authority():
-		freeze = true
 
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority():
