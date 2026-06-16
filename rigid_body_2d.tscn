@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://du1mrupsgcmhh"]
+
+[ext_resource type="Script" uid="uid://b73ecr31k86g6" path="res://rigid_body_2d.gd" id="1_jiowd"]
+[ext_resource type="Texture2D" uid="uid://dv40g8txitjmy" path="res://icon.svg" id="1_wltir"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiowd"]
+radius = 64.49806
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=483951007]
+script = ExtResource("1_jiowd")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=972596824]
+texture = ExtResource("1_wltir")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799101779]
+shape = SubResource("CircleShape2D_jiowd")
