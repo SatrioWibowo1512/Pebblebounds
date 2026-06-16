@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://t6d6c0e24hs1"]
 
-[ext_resource type="Texture2D" uid="uid://dv40g8txitjmy" path="res://icon.svg" id="1_0e48y"]
-[ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://rigid_body_2d.tscn" id="2_epypp"]
+[ext_resource type="Script" uid="uid://ds8m7deiptotv" path="res://main.gd" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://Player.tscn" id="2_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://dv40g8txitjmy" path="res://icon.svg" id="3_fos0i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
 bounce = 1.0
@@ -12,9 +13,12 @@ size = Vector2(1224, 134)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(23, 127)
 
-[node name="Node2D" type="Node2D" unique_id=1101869096]
+[node name="Main" type="Node2D" unique_id=1101869096 node_paths=PackedStringArray("ip_edit")]
+script = ExtResource("1_r0du0")
+player_scene = ExtResource("2_cm0pq")
+ip_edit = NodePath("CanvasLayer/VBoxContainer/IPEdit")
 
-[node name="RigidBody2D" parent="." unique_id=2063305516 instance=ExtResource("2_epypp")]
+[node name="RigidBody2D" parent="." unique_id=2063305516 instance=ExtResource("2_cm0pq")]
 position = Vector2(534, 390)
 
 [node name="Camera2D" type="Camera2D" parent="RigidBody2D" unique_id=1639314518]
@@ -25,7 +29,7 @@ position = Vector2(543, 522)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=2109314468]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=872200046]
 scale = Vector2(9.5, 1)
@@ -37,7 +41,7 @@ physics_material_override = SubResource("PhysicsMaterial_0e48y")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D5" unique_id=631491895]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D5" unique_id=782085117]
 scale = Vector2(9.5, 1)
@@ -51,7 +55,7 @@ shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1641295753]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="." unique_id=1998219188]
 position = Vector2(-2505, 495)
@@ -61,7 +65,7 @@ shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D6" unique_id=1955912394]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=1165520802]
 position = Vector2(3142, -48)
@@ -71,7 +75,7 @@ shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D3" unique_id=1191883263]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=38217955]
 position = Vector2(4262, 472)
@@ -81,7 +85,7 @@ shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D4" unique_id=1780945102]
 scale = Vector2(9.5, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=1022703394]
 position = Vector2(974, 332)
@@ -91,4 +95,33 @@ shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2" unique_id=80607824]
 scale = Vector2(0.1875, 1)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("3_fos0i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=781539959]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1519156877]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IPEdit" type="LineEdit" parent="CanvasLayer/VBoxContainer" unique_id=290922633]
+layout_mode = 2
+
+[node name="HostButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=470347900]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1244728258]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1881000122]
+_spawnable_scenes = PackedStringArray("uid://du1mrupsgcmhh")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

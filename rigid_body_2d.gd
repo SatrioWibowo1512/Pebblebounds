@@ -8,6 +8,9 @@ var is_dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
+	if not is_multiplayer_authority():
+		return
+	
 	if linear_velocity.length() > stop_threshold:
 		is_dragging = false
 		return

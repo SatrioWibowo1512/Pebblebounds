@@ -6,6 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jiowd"]
 radius = 64.49806
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jiowd"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="RigidBody2D" type="RigidBody2D" unique_id=483951007]
 script = ExtResource("1_jiowd")
 
@@ -14,3 +22,6 @@ texture = ExtResource("1_wltir")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799101779]
 shape = SubResource("CircleShape2D_jiowd")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=360659785]
+replication_config = SubResource("SceneReplicationConfig_jiowd")
