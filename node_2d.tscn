@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dedxfhrll70oh"]
 
 [node name="Node2D" type="Node2D" unique_id=551254806]
+z_index = -1
 
 [node name="Base" type="StaticBody2D" parent="." unique_id=1104689499]
 position = Vector2(312, -17)
@@ -81,4 +82,5 @@ position = Vector2(288, -234)
 [node name="Polygon2D" type="Polygon2D" parent="Base3" unique_id=1722889529]
 polygon = PackedVector2Array(620, -41, 599, -27, 580, -23, 557, -26, 536, -37, 561, -48, 583, -36, 608, -51)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Base3" unique_id=27680444]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Base3" unique_id=531517355]
+polygon = PackedVector2Array(620, -41, 599, -27, 580, -23, 557, -26, 536, -37, 561, -48, 583, -36, 583, -36, 608, -51)

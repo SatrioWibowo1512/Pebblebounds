@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://du1mrupsgcmhh"]
 
-[ext_resource type="Script" uid="uid://b4gyyid5b1ojn" path="res://rigid_body_2d.gd" id="1_jiowd"]
+[ext_resource type="Script" uid="uid://b4gyyid5b1ojn" path="res://player.gd" id="1_jiowd"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jiowd"]
 properties/0/path = NodePath(".:position")
@@ -12,15 +12,26 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Polygon2D:color")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:can_jump")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=483951007]
 script = ExtResource("1_jiowd")
-power_multiplier = 3.0
+power_multiplier = 9.0
+max_drag = 50.0
+
+[node name="Line2D" type="Line2D" parent="." unique_id=666400058]
+width = 3.0
+default_color = Color(0.91288716, 0.27176887, 0.2726362, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=360659785]
 replication_config = SubResource("SceneReplicationConfig_jiowd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1310383384]
+zoom = Vector2(3, 3)
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=201211830]
 color = Color(1, 1, 0, 1)
