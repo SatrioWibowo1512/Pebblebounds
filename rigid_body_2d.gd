@@ -8,10 +8,18 @@ var is_dragging: bool = false
 var drag_start: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	# Kamera hanya aktif untuk batu milik sendiri
+	
 	$Camera2D.enabled = name == str(multiplayer.get_unique_id())
+	$Polygon2D.color = Color(
+	randf(),
+	randf(),
+	randf(),
+	1.0
+)
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		linear_velocity = Vector2(0,0)
 	# Hanya izinkan input jika ini adalah batu kita sendiri
 	if name != str(multiplayer.get_unique_id()):
 		return

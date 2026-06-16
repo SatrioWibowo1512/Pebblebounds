@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://du6waj2bammug"]
+
+[ext_resource type="Texture2D" uid="uid://b3stwa4smb174" path="res://icon.svg" id="1_kibky"]
+
+[node name="JungkatJungkit" type="Node2D" unique_id=1361428845]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=48273700]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=418061102]
+polygon = PackedVector2Array(-17, 11, 14, 9, 0, -72)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=717274683]
+scale = Vector2(0.0625, 0.25)
+polygon = PackedVector2Array(-247.99997, 32, 256, 32, 0, -295.99997)
+uv = PackedVector2Array(-48, 36, 48, 36, 0, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=731180386]
+position = Vector2(0, -76)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1329288749]
+position = Vector2(0, -2.0000007)
+scale = Vector2(3.4375, 0.14062499)
+texture = ExtResource("1_kibky")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D" unique_id=299621920]
+position = Vector2(0, -2.0000007)
+scale = Vector2(3.4375, 0.14062499)
+polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
+
+[node name="GrooveJoint2D" type="GrooveJoint2D" parent="." unique_id=1187529593]
+position = Vector2(0, -94)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../RigidBody2D")

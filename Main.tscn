@@ -2,16 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ds8m7deiptotv" path="res://main.gd" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://Player.tscn" id="2_cm0pq"]
-[ext_resource type="Texture2D" uid="uid://b3stwa4smb174" path="res://icon.svg" id="3_fos0i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
-size = Vector2(23, 127)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0e48y"]
-bounce = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(1224, 134)
+[ext_resource type="PackedScene" uid="uid://dedxfhrll70oh" path="res://node_2d.tscn" id="3_r0du0"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0du0"]
 
@@ -48,168 +39,13 @@ spawn_path = NodePath("../Players")
 
 [node name="Players" type="Node2D" parent="." unique_id=101909381]
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=1022703394]
-position = Vector2(974, 332)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=228745734]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2" unique_id=80607824]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=1521894954]
-position = Vector2(1462, 862)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3" unique_id=1080729193]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3" unique_id=263182796]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=543270662]
-position = Vector2(1866, 804)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=362307166]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4" unique_id=1533141581]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D5" type="RigidBody2D" parent="." unique_id=863628433]
-position = Vector2(2440, 692)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5" unique_id=401392431]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D5" unique_id=1455580136]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D6" type="RigidBody2D" parent="." unique_id=1974840484]
-position = Vector2(2734, 794)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6" unique_id=2041340683]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D6" unique_id=1450301816]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D7" type="RigidBody2D" parent="." unique_id=858365398]
-position = Vector2(3146, 794)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7" unique_id=1090608561]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D7" unique_id=686303253]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D8" type="RigidBody2D" parent="." unique_id=667195627]
-position = Vector2(3670, 852)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D8" unique_id=620244687]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D8" unique_id=2049747206]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D9" type="RigidBody2D" parent="." unique_id=1870357847]
-position = Vector2(4096, 790)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D9" unique_id=2001107251]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D9" unique_id=1245782985]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="RigidBody2D10" type="RigidBody2D" parent="." unique_id=497322746]
-position = Vector2(4096, 790)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D10" unique_id=1467959012]
-shape = SubResource("RectangleShape2D_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D10" unique_id=1253734386]
-scale = Vector2(0.1875, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="Floors" type="Node2D" parent="." unique_id=582684040]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Floors" unique_id=238119648]
-position = Vector2(543, 522)
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D" unique_id=2109314468]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/StaticBody2D" unique_id=872200046]
-scale = Vector2(9.5, 1)
-polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="Floors" unique_id=189494559]
-position = Vector2(-873, 780)
-physics_material_override = SubResource("PhysicsMaterial_0e48y")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D5" unique_id=631491895]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/StaticBody2D5" unique_id=782085117]
-scale = Vector2(9.5, 1)
-polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Floors" unique_id=1397827929]
-position = Vector2(1930, 200)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D2" unique_id=1826573604]
-shape = SubResource("RectangleShape2D_0hol4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D2" unique_id=1641295753]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="Floors" unique_id=1998219188]
-position = Vector2(-2505, 495)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D6" unique_id=1481048865]
-shape = SubResource("RectangleShape2D_0hol4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D6" unique_id=1955912394]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="Floors" unique_id=1165520802]
-position = Vector2(3142, -48)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D3" unique_id=157102890]
-shape = SubResource("RectangleShape2D_0hol4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D3" unique_id=1191883263]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="Floors" unique_id=38217955]
-position = Vector2(4262, 472)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D4" unique_id=1388869406]
-shape = SubResource("RectangleShape2D_0hol4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floors/StaticBody2D4" unique_id=1780945102]
-scale = Vector2(9.5, 1)
-texture = ExtResource("3_fos0i")
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="Floors" unique_id=538352701]
+[node name="StaticBody2D7" type="StaticBody2D" parent="." unique_id=538352701]
 position = Vector2(0, 1064)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floors/StaticBody2D7" unique_id=151378904]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7" unique_id=151378904]
 shape = SubResource("WorldBoundaryShape2D_r0du0")
 
-[node name="ColorRect" type="ColorRect" parent="Floors/StaticBody2D7" unique_id=2139207836]
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D7" unique_id=2139207836]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -217,6 +53,10 @@ offset_left = -5000.0
 offset_right = 45000.0
 offset_bottom = 40.0
 grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="." unique_id=551254806 instance=ExtResource("3_r0du0")]
+position = Vector2(10, 101)
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
