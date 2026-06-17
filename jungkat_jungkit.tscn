@@ -2,6 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b3stwa4smb174" path="res://icon.svg" id="1_kibky"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kibky"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="JungkatJungkit" type="Node2D" unique_id=1361428845]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=48273700]
@@ -28,6 +33,12 @@ scale = Vector2(3.4375, 0.14062499)
 polygon = PackedVector2Array(59.1, -64, -59, -64, -63.8, -59, -64, 61, -60.3, 64, 59.6, 64, 63.9, 59, 64, -61.1)
 
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="." unique_id=1187529593]
-position = Vector2(0, -94)
+position = Vector2(0, -70)
 node_a = NodePath("../StaticBody2D")
 node_b = NodePath("../RigidBody2D")
+length = 16.0
+initial_offset = 1.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=386908258]
+root_path = NodePath("../RigidBody2D")
+replication_config = SubResource("SceneReplicationConfig_kibky")
