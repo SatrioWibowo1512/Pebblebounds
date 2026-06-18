@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://t6d6c0e24hs1"]
 
-[ext_resource type="Script" uid="uid://xi0q86a05gwh" path="res://main.gd" id="1_r0du0"]
-[ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://Player.tscn" id="2_cm0pq"]
-[ext_resource type="PackedScene" uid="uid://cdgx71hg3vgp0" path="res://level.tscn" id="3_r0du0"]
-[ext_resource type="PackedScene" uid="uid://coy8qka0cesy5" path="res://trampoline.tscn" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://xi0q86a05gwh" path="res://scenes/main/main.gd" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://scenes/player/Player.tscn" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://cdgx71hg3vgp0" path="res://scenes/levels/level.tscn" id="3_r0du0"]
+[ext_resource type="PackedScene" uid="uid://coy8qka0cesy5" path="res://scenes/trampoline.tscn" id="4_cm0pq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r0du0"]
 

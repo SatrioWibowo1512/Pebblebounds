@@ -20,7 +20,6 @@ func get_local_ip() -> String:
 			return ip
 	return "Tidak ditemukan"
 
-# Berjalan di background thread
 func setup_upnp() -> void:
 	var upnp := UPNP.new()
 	var discover_result := upnp.discover()
@@ -58,11 +57,9 @@ func _on_host_button_pressed() -> void:
 		return
 
 	multiplayer.multiplayer_peer = peer
-	add_player(multiplayer.get_unique_id())
+	add_player(multiplayer.get_unique_id()) 
 
 	ip_label.text = "Menyiapkan UPnP..."
-	
-	# Menjalankan UPnP tanpa memblokir game (Solusi Delay)
 	WorkerThreadPool.add_task(setup_upnp)
 
 func _on_join_button_pressed() -> void:

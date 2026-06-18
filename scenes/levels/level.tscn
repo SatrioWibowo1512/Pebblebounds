@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdgx71hg3vgp0"]
 
-[ext_resource type="Script" uid="uid://dbgu5ralyx023" path="res://base.gd" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://dbgu5ralyx023" path="res://scripts/platform_smoother.gd" id="1_u52ul"]
 
 [node name="Node2D" type="Node2D" unique_id=551254806]
 z_index = -1
