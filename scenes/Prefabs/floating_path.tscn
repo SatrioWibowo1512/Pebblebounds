@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sjn2bo2b0m7d" path="res://scenes/Prefabs/floating_path.gd" id="1_m3sf5"]
 
-[sub_resource type="Curve2D" id="Curve2D_oujbn"]
-
 [node name="FloatingPath" type="Path2D" unique_id=101375578]
-curve = SubResource("Curve2D_oujbn")
 script = ExtResource("1_m3sf5")
+tebal_layer = Array[float]([30.0, 18.0, 14.0, 4.0])
+warna_layer = Array[Color]([Color(0.75686276, 0.47058824, 0.29803923, 1), Color(0, 0, 0, 1), Color(0.4392157, 0.7647059, 0.27058825, 1), Color(0, 0, 0, 1)])
