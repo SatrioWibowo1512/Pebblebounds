@@ -7,3 +7,4 @@
 [node name="GroundPath" type="Path2D" unique_id=101375578]
 curve = SubResource("Curve2D_oujbn")
 script = ExtResource("1_xcrba")
+kedalaman_tanah = 1000.0

@@ -50,14 +50,27 @@ func _update_visual():
 	poly_pts.append(Vector2(pts[-1].x, pts[-1].y + kedalaman_tanah))
 	poly_pts.append(Vector2(pts[0].x, pts[0].y + kedalaman_tanah))
 	
+	# 1. Base Ground (Polygon)
 	var poly = Polygon2D.new()
-	poly.polygon = poly_pts; poly.color = warna_tanah_terang
+	poly.polygon = poly_pts
+	poly.color = warna_tanah_terang
+	# [PENTING] Mengaktifkan Masking. Semua child dari polygon ini 
+	# yang melewati batas atas (langit) akan dipotong/disembunyikan!
+	poly.clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
 	add_child(poly); _nodes_visual.append(poly)
 
-	var pts_shadow = PackedVector2Array()
-	for p in pts: pts_shadow.append(p + Vector2(0, tebal_outline / 2.0))
-	
-	_buat_garis(pts_shadow, tebal_tanah_gelap * 2.0, warna_tanah_gelap)
+	# 2. Shadow Tanah Gelap (Inner Stroke)
+	# Kita buat jauh lebih tebal, dan dimasukkan sebagai child dari polygon
+	var l_shadow = Line2D.new()
+	l_shadow.points = pts
+	# Hitungan otomatis agar ketebalan bayangan pas dengan input Inspector
+	l_shadow.width = tebal_outline + (tebal_tanah_gelap * 2.0) 
+	l_shadow.default_color = warna_tanah_gelap
+	l_shadow.joint_mode = Line2D.LINE_JOINT_ROUND
+	poly.add_child(l_shadow) 
+
+	# 3. Outline & Rumput
+	# Dirender normal tanpa masking di paling depan untuk menutupi potongan
 	_buat_garis(pts, tebal_outline, warna_outline)
 	_buat_garis(pts, tebal_rumput, warna_rumput)
 
@@ -70,7 +83,6 @@ func _buat_garis(pts: PackedVector2Array, tebal: float, warna: Color):
 func _bake_collision_polygon():
 	if not curve or curve.get_baked_points().size() < 3: return
 	
-	# Native Godot: Tessellate untuk Low-Poly Collision
 	var pts = curve.tessellate(max_stages, toleransi_sudut)
 	
 	var body = get_node_or_null("StaticBody2D")
@@ -87,3 +99,4 @@ func _bake_collision_polygon():
 	poly_pts.append(Vector2(pts[-1].x, pts[-1].y + kedalaman_tanah))
 	poly_pts.append(Vector2(pts[0].x, pts[0].y + kedalaman_tanah))
 	col.polygon = poly_pts
+	
