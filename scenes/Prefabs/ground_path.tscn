@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dq67vrx2aqpf3"]
+
+[ext_resource type="Script" uid="uid://b4wntnvlfwrng" path="res://scenes/Prefabs/ground_path.gd" id="1_xcrba"]
+
+[sub_resource type="Curve2D" id="Curve2D_oujbn"]
+
+[node name="GroundPath" type="Path2D" unique_id=101375578]
+curve = SubResource("Curve2D_oujbn")
+script = ExtResource("1_xcrba")
