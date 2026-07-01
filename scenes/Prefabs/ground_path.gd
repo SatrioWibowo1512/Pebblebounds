@@ -15,11 +15,11 @@ extends Path2D
 	set(v): warna_tanah_terang = v; _update_visual()
 
 @export_group("Ketebalan Elemen")
-@export var tebal_outline: float = 40.0: 
+@export var tebal_outline: float = 17.0: 
 	set(v): tebal_outline = v; _update_visual()
-@export var tebal_rumput: float = 30.0: 
+@export var tebal_rumput: float = 10.0: 
 	set(v): tebal_rumput = v; _update_visual()
-@export var tebal_tanah_gelap: float = 20.0: 
+@export var tebal_tanah_gelap: float = 10.0: 
 	set(v): tebal_tanah_gelap = v; _update_visual()
 
 @export_category("Optimasi Fisika")
@@ -39,6 +39,9 @@ func _process(_delta):
 		if current_pts != _last_pts:
 			_update_visual()
 			_last_pts = current_pts.duplicate()
+
+func  _ready():
+	_update_visual()
 
 func _update_visual():
 	if not is_inside_tree() or not curve or curve.get_baked_points().size() < 3: return
