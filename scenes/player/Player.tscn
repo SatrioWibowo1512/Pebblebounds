@@ -4,7 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://cmhworbwpm2in" path="res://assets/sfx/HitAudio.mp3" id="2_kne1u"]
 [ext_resource type="AudioStream" uid="uid://biabf7n2yw4dy" path="res://assets/sfx/JumpAudio.mp3" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://c1gp87hwfbbnm" path="res://scenes/player/indicator.gd" id="4_tpg5x"]
-[ext_resource type="Texture2D" uid="uid://cy768mxjbdqdt" path="res://scenes/player/Group 68.png" id="5_tpg5x"]
+[ext_resource type="Texture2D" uid="uid://dgmx8w5ikjh0f" path="res://assets/player/Pebble_Base.webp" id="5_c3xxp"]
+[ext_resource type="Texture2D" uid="uid://tbkg4fnsqnid" path="res://assets/player/Pebble_Dizzy.webp" id="6_npwbq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tpg5x"]
 
@@ -24,7 +25,8 @@ max_contacts_reported = 3
 script = ExtResource("1_jiowd")
 power_multiplier = 26.0
 max_drag = 50.0
-spin_power = 1.0
+base_cam_zoom = 0.7
+min_cam_zoom = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1310383384]
 zoom = Vector2(0.7, 0.7)
@@ -45,20 +47,27 @@ stream = ExtResource("3_e80uo")
 [node name="Indicator" type="Node2D" parent="." unique_id=252598329 node_paths=PackedStringArray("player")]
 script = ExtResource("4_tpg5x")
 player = NodePath("..")
+max_drag_distance = 300.0
+outline_color = Color(1, 1, 1, 0.39215687)
+outline_width = 13.0
 
 [node name="JumpIndicator" type="Line2D" parent="Indicator" unique_id=666400058]
 width_curve = SubResource("Curve_xhfnw")
-default_color = Color(0.19721901, 0.52142555, 0.9728454, 1)
+default_color = Color(1, 1, 1, 0.39215687)
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="DragIndicator" type="Line2D" parent="Indicator" unique_id=1203806730]
 width = 20.0
 width_curve = SubResource("Curve_kpjcp")
-default_color = Color(0.3148567, 0.41841608, 0.14764377, 1)
+default_color = Color(1, 1, 1, 0.15686275)
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Avatar2" type="Sprite2D" parent="." unique_id=1050938613]
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("5_c3xxp")
+
 [node name="Avatar" type="Sprite2D" parent="." unique_id=989920364]
 scale = Vector2(0.335, 0.335)
-texture = ExtResource("5_tpg5x")
+texture = ExtResource("6_npwbq")

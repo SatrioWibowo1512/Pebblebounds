@@ -1,7 +1,145 @@
 [gd_scene format=3 uid="uid://dc4452wxjjn21"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_5h11f"]
-font_size = 100
+[ext_resource type="Texture2D" uid="uid://nrki44lk78y4" path="res://assets/GameLogo 1.png" id="1_7vrkn"]
+[ext_resource type="Shader" uid="uid://cu2vrnxp1o3kg" path="res://background.gdshader" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://bs3br47nbrekb" path="res://assets/UI/Button_Normal.webp" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://7l3wc5ulu5cb" path="res://assets/UI/Button_Hover.webp" id="4_glbon"]
+[ext_resource type="Script" uid="uid://cjutnr2mwvae8" path="res://hover_button.gd" id="5_glbon"]
+[ext_resource type="AudioStream" uid="uid://fdi4gla33emq" path="res://assets/audios/bgm3.ogg" id="6_nlkkf"]
+[ext_resource type="AudioStream" uid="uid://biabf7n2yw4dy" path="res://assets/sfx/JumpAudio.mp3" id="7_qe12f"]
+[ext_resource type="Shader" uid="uid://bok2xmdm7s68" path="res://transition.gdshader" id="8_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://dgmx8w5ikjh0f" path="res://assets/player/Pebble_Base.webp" id="9_dy7ct"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqfyk"]
+shader = ExtResource("8_8qtwp")
+shader_parameter/mask_texture = ExtResource("9_dy7ct")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/scale = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
+shader = ExtResource("2_fu7sn")
+shader_parameter/color1 = Color(0, 0.6, 0.8627451, 1)
+shader_parameter/color2 = Color(0, 0.5686275, 0.81960785, 1)
+shader_parameter/angle = 45.0
+shader_parameter/speed = 0.1
+shader_parameter/stripe_width = 0.1
+
+[sub_resource type="Animation" id="Animation_7vrkn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(547, 299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(302.5, 75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Transition:material:shader_parameter/scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Transition:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0o4t1"]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:material:shader_parameter/scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.230000105925]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0, 1),
+"update": 1,
+"values": [1, -1]
+}
+
+[sub_resource type="Animation" id="Animation_fu7sn"]
+resource_name = "logo_wobblke"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(547, 299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(302.5, 75), Vector2(303, 53.000004)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jix8l"]
+_data = {
+&"RESET": SubResource("Animation_7vrkn"),
+&"intro": SubResource("Animation_0o4t1"),
+&"logo_wobble": SubResource("Animation_fu7sn")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rf4v"]
+font_size = 21
 
 [node name="MainMenu" type="Control" unique_id=753737474]
 layout_mode = 3
@@ -10,43 +148,116 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="." unique_id=1423186973]
+[node name="Transition" type="ColorRect" parent="." unique_id=1366935808]
+material = SubResource("ShaderMaterial_nqfyk")
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -345.0
-offset_top = 73.0
-offset_right = 345.0
-offset_bottom = 210.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "Pebblebounds"
-label_settings = SubResource("LabelSettings_5h11f")
+grow_vertical = 2
 
-[node name="Button" type="Button" parent="." unique_id=569575255]
+[node name="Logo" type="TextureRect" parent="." unique_id=1993465495]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -54.0
-offset_top = 318.0
-offset_right = 103.0
-offset_bottom = 395.0
+anchors_preset = -1
+anchor_left = 0.26302084
+anchor_top = 0.08179013
+anchor_right = 0.7378472
+anchor_bottom = 0.54320985
+offset_left = -0.5
+offset_top = 21.999996
+offset_right = -0.5
+offset_bottom = 22.00003
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "START"
+grow_vertical = 2
+texture = ExtResource("1_7vrkn")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="." unique_id=1069958761]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=150954028]
+z_index = -99
+material = SubResource("ShaderMaterial_1rf4v")
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -56.0
-offset_top = 410.0
-offset_right = 101.0
-offset_bottom = 487.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "QUIT"
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=767032658]
+libraries/ = SubResource("AnimationLibrary_jix8l")
+autoplay = &"intro"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1517964980]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = 88.0
+offset_right = 484.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="ContinueButton" type="TextureButton" parent="HBoxContainer" unique_id=679861815]
+custom_minimum_size = Vector2(320, 0)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_jix8l")
+texture_pressed = ExtResource("4_glbon")
+texture_hover = ExtResource("4_glbon")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("5_glbon")
+
+[node name="NewGameButton" type="TextureButton" parent="HBoxContainer" unique_id=1288578749]
+custom_minimum_size = Vector2(320, 0)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_jix8l")
+texture_pressed = ExtResource("4_glbon")
+texture_hover = ExtResource("4_glbon")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("5_glbon")
+
+[node name="QuitButton" type="TextureButton" parent="HBoxContainer" unique_id=1897522442]
+custom_minimum_size = Vector2(320, 0)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_jix8l")
+texture_pressed = ExtResource("4_glbon")
+texture_hover = ExtResource("4_glbon")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("5_glbon")
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1608738380]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 615.0
+offset_right = 1149.0
+offset_bottom = 645.0
+text = "V.0.1"
+label_settings = SubResource("LabelSettings_1rf4v")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1165422136]
+stream = ExtResource("6_nlkkf")
+autoplay = true
+
+[node name="Button" type="AudioStreamPlayer" parent="." unique_id=573015242]
+stream = ExtResource("7_qe12f")
+volume_db = -3.0

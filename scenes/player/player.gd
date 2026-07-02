@@ -4,11 +4,19 @@ signal drag_updated(start_pos: Vector2, current_pos: Vector2, drag_vector: Vecto
 signal drag_ended
 signal jumped(impulse: Vector2)
 
+@onready var camera_2d: Camera2D = $Camera2D
+
 @export var power_multiplier: float = 10.0
 @export var max_drag: float = 150.0
 @export var stop_threshold: float = 5.0
 @export var spin_power: float = 10.0
 @export var air_control_power: float = 3000.0
+
+# --- PARAMETER KAMERA (BISA DIATUR DI INSPECTOR) ---
+@export var base_cam_zoom: float = 1.0       # Zoom awal/dasar kamera
+@export var min_cam_zoom: float = 0.8        # Zoom out maksimal saat drag penuh
+@export var max_cam_offset: float = 80.0     # Jarak maksimal kamera bergeser
+@export var cam_smooth_speed: float = 8.0    # Kecepatan interpolasi (smoothing) kamera
 
 var can_jump: bool = false
 var is_dragging: bool = false
@@ -22,13 +30,29 @@ func _physics_process(_delta: float) -> void:
 		if spin_dir != 0:
 			apply_torque(spin_dir * air_control_power)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if is_dragging and can_jump:
 		var current_mouse := get_global_mouse_position()
 		var drag_vector := (drag_start - current_mouse).limit_length(max_drag)
 		drag_updated.emit(drag_start, current_mouse, drag_vector)
+		
+		# Hitung rasio tarikan (0.0 sampai 1.0)
+		var drag_ratio = drag_vector.length() / max_drag
+		
+		# Geser target posisi kamera searah dengan drag_vector
+		var target_offset = drag_vector.normalized() * (drag_ratio * max_cam_offset)
+		camera_2d.offset = camera_2d.offset.lerp(target_offset, cam_smooth_speed * delta)
+		
+		# Zoom out secara dinamis dari base_cam_zoom ke min_cam_zoom
+		var target_zoom = lerp(base_cam_zoom, min_cam_zoom, drag_ratio)
+		camera_2d.zoom = camera_2d.zoom.lerp(Vector2(target_zoom, target_zoom), cam_smooth_speed * delta)
 	else:
 		drag_ended.emit()
+		
+		# Kembalikan kamera ke posisi normal dan zoom dasar (base_cam_zoom)
+		if is_instance_valid(camera_2d):
+			camera_2d.offset = camera_2d.offset.lerp(Vector2.ZERO, cam_smooth_speed * delta)
+			camera_2d.zoom = camera_2d.zoom.lerp(Vector2(base_cam_zoom, base_cam_zoom), cam_smooth_speed * delta)
 
 func _input(event: InputEvent) -> void:
 	if not can_jump:
