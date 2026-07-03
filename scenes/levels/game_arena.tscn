@@ -1019,7 +1019,7 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 polygon = PackedVector2Array(11604, -7853, 11629.839, -7868.564, 11666.206, -7879.079, 11709.145, -7884.8467, 11754.699, -7886.1675, 11798.917, -7883.343, 11837.843, -7876.672, 11867.521, -7866.4575, 11884, -7853, 11893.146, -7832.9336, 11902.477, -7804.785, 11910.503, -7771.6943, 11915.737, -7736.801, 11916.691, -7703.245, 11911.879, -7674.166, 11899.811, -7652.7046, 11879, -7642, 11740.871, -7633.451, 11670.582, -7639.811, 11642.521, -7646.877, 11622, -7657, 11608.939, -7674.4326, 11601.133, -7700.865, 11597.497, -7732.8076, 11596.951, -7766.769, 11604, -7853)
 
 [node name="Player" parent="." unique_id=483951007 instance=ExtResource("7_yw0gw")]
-position = Vector2(14898, -13978)
+position = Vector2(13311, -11165)
 gravity_scale = 4.0
 power_multiplier = 10.0
 max_drag = 200.0
@@ -1088,9 +1088,21 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
 [node name="EventTrigger" parent="TriggerEvent" unique_id=1322634344 instance=ExtResource("1_8ql7b")]
 position = Vector2(13978, -13893)
-dialog_id = "opening_1"
+dialog_id = "ending"
 
 [node name="CollisionShape2D" parent="TriggerEvent/EventTrigger" index="0" unique_id=463916615]
 shape = SubResource("CircleShape2D_8ql7b")
+
+[node name="event_trigger" parent="TriggerEvent" unique_id=113825712 instance=ExtResource("1_8ql7b")]
+position = Vector2(4512, -1202)
+dialog_id = "boss_battle_1"
+
+[node name="event_trigger2" parent="TriggerEvent" unique_id=835337025 instance=ExtResource("1_8ql7b")]
+position = Vector2(14558, -11545)
+dialog_id = "boss_battle_3"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=260329777]
+position = Vector2(13112, -11165)
+zoom = Vector2(0.375, 0.375)
 
 [editable path="TriggerEvent/EventTrigger"]
