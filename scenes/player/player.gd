@@ -12,15 +12,14 @@ signal jumped(impulse: Vector2)
 @export var spin_power: float = 10.0
 @export var air_control_power: float = 3000.0
 
-# --- PARAMETER KAMERA (BISA DIATUR DI INSPECTOR) ---
-@export var base_cam_zoom: float = 1.0       # Zoom awal/dasar kamera
-@export var min_cam_zoom: float = 0.8        # Zoom out maksimal saat drag penuh
-@export var max_cam_offset: float = 80.0     # Jarak maksimal kamera bergeser
-@export var cam_smooth_speed: float = 8.0    # Kecepatan interpolasi (smoothing) kamera
+@export var base_cam_zoom: float = 1.0       
+@export var min_cam_zoom: float = 0.8        
+@export var max_cam_offset: float = 80.0     
+@export var cam_smooth_speed: float = 8.0    
 
 var can_jump: bool = false
 var is_dragging: bool = false
-var drag_start: Vector2 = Vector2.ZERO
+var drag_start_viewport: Vector2 = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
 	can_jump = linear_velocity.length() <= stop_threshold
@@ -32,24 +31,19 @@ func _physics_process(_delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if is_dragging and can_jump:
-		var current_mouse := get_global_mouse_position()
-		var drag_vector := (drag_start - current_mouse).limit_length(max_drag)
-		drag_updated.emit(drag_start, current_mouse, drag_vector)
+		var current_viewport := get_viewport().get_mouse_position()
+		var drag_vector := (drag_start_viewport - current_viewport).limit_length(max_drag)
 		
-		# Hitung rasio tarikan (0.0 sampai 1.0)
+		drag_updated.emit(drag_start_viewport, current_viewport, drag_vector)
+		
 		var drag_ratio = drag_vector.length() / max_drag
-		
-		# Geser target posisi kamera searah dengan drag_vector
 		var target_offset = drag_vector.normalized() * (drag_ratio * max_cam_offset)
 		camera_2d.offset = camera_2d.offset.lerp(target_offset, cam_smooth_speed * delta)
 		
-		# Zoom out secara dinamis dari base_cam_zoom ke min_cam_zoom
 		var target_zoom = lerp(base_cam_zoom, min_cam_zoom, drag_ratio)
 		camera_2d.zoom = camera_2d.zoom.lerp(Vector2(target_zoom, target_zoom), cam_smooth_speed * delta)
 	else:
 		drag_ended.emit()
-		
-		# Kembalikan kamera ke posisi normal dan zoom dasar (base_cam_zoom)
 		if is_instance_valid(camera_2d):
 			camera_2d.offset = camera_2d.offset.lerp(Vector2.ZERO, cam_smooth_speed * delta)
 			camera_2d.zoom = camera_2d.zoom.lerp(Vector2(base_cam_zoom, base_cam_zoom), cam_smooth_speed * delta)
@@ -62,11 +56,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			is_dragging = true
-			drag_start = get_global_mouse_position()
+			drag_start_viewport = get_viewport().get_mouse_position()
 		elif is_dragging:
 			is_dragging = false
-			var drag_end := get_global_mouse_position()
-			var drag_vector := (drag_start - drag_end).limit_length(max_drag)
+			var current_viewport := get_viewport().get_mouse_position()
+			var drag_vector := (drag_start_viewport - current_viewport).limit_length(max_drag)
 			apply_jump_impulse(drag_vector * power_multiplier)
 
 func apply_jump_impulse(impulse: Vector2) -> void:

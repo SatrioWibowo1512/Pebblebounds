@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dduy5s46nbmni"]
+
+[ext_resource type="Script" uid="uid://cpb2ufyp23bdt" path="res://scenes/Prefabs/dialog_manager.gd" id="1_73ks1"]
+[ext_resource type="Texture2D" uid="uid://6igtvee6u04w" path="res://assets/dialog/DialogBox_Pebble.webp" id="1_kqjra"]
+[ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="2_xf5b0"]
+
+[node name="DialogManager" type="CanvasLayer" unique_id=1026685107]
+script = ExtResource("1_73ks1")
+
+[node name="DialogBox" type="TextureRect" parent="." unique_id=1094218355]
+anchors_preset = -1
+anchor_left = 0.27083334
+anchor_top = 0.08796296
+anchor_right = 0.7239583
+anchor_bottom = 0.31635803
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_kqjra")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogBox" unique_id=688098118]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028735632
+anchor_top = 0.35135135
+anchor_right = 0.97318006
+anchor_bottom = 0.83108115
+theme_override_fonts/normal_font = ExtResource("2_xf5b0")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+metadata/_edit_use_anchors_ = true

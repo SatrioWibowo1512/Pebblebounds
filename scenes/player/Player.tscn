@@ -5,15 +5,16 @@
 [ext_resource type="AudioStream" uid="uid://biabf7n2yw4dy" path="res://assets/sfx/JumpAudio.mp3" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://c1gp87hwfbbnm" path="res://scenes/player/indicator.gd" id="4_tpg5x"]
 [ext_resource type="Texture2D" uid="uid://dgmx8w5ikjh0f" path="res://assets/player/Pebble_Base.webp" id="5_c3xxp"]
+[ext_resource type="Script" uid="uid://bchc7h70t7rk3" path="res://scenes/player/visual.gd" id="5_npwbq"]
 [ext_resource type="Texture2D" uid="uid://tbkg4fnsqnid" path="res://assets/player/Pebble_Dizzy.webp" id="6_npwbq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tpg5x"]
 
-[sub_resource type="Curve" id="Curve_xhfnw"]
+[sub_resource type="Curve" id="Curve_kpjcp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4963295), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_kpjcp"]
+[sub_resource type="Curve" id="Curve_xhfnw"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4963295), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -44,30 +45,35 @@ stream = ExtResource("2_kne1u")
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="Audio" unique_id=878638955]
 stream = ExtResource("3_e80uo")
 
-[node name="Indicator" type="Node2D" parent="." unique_id=252598329 node_paths=PackedStringArray("player")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1572854460]
+
+[node name="Indicator" type="Node2D" parent="CanvasLayer" unique_id=252598329 node_paths=PackedStringArray("player", "jump_indicator")]
 script = ExtResource("4_tpg5x")
-player = NodePath("..")
-max_drag_distance = 300.0
+player = NodePath("../..")
+jump_indicator = NodePath("../../JumpIndicator")
+max_drag_distance = 200.0
 outline_color = Color(1, 1, 1, 0.39215687)
-outline_width = 13.0
 
-[node name="JumpIndicator" type="Line2D" parent="Indicator" unique_id=666400058]
-width_curve = SubResource("Curve_xhfnw")
-default_color = Color(1, 1, 1, 0.39215687)
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="DragIndicator" type="Line2D" parent="Indicator" unique_id=1203806730]
-width = 20.0
+[node name="DragIndicator" type="Line2D" parent="CanvasLayer/Indicator" unique_id=1203806730]
 width_curve = SubResource("Curve_kpjcp")
 default_color = Color(1, 1, 1, 0.15686275)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Avatar2" type="Sprite2D" parent="." unique_id=1050938613]
+[node name="JumpIndicator" type="Line2D" parent="." unique_id=666400058]
+width_curve = SubResource("Curve_xhfnw")
+default_color = Color(1, 1, 1, 0.39215687)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Visual" type="Node2D" parent="." unique_id=1577485975]
+script = ExtResource("5_npwbq")
+long_fall_time = 1.0
+
+[node name="BaseStone" type="Sprite2D" parent="Visual" unique_id=1050938613]
 scale = Vector2(0.335, 0.335)
 texture = ExtResource("5_c3xxp")
 
-[node name="Avatar" type="Sprite2D" parent="." unique_id=989920364]
+[node name="Expression" type="Sprite2D" parent="Visual" unique_id=989920364]
 scale = Vector2(0.335, 0.335)
 texture = ExtResource("6_npwbq")

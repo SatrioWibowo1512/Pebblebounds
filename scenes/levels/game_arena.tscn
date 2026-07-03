@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cc3w0xf6ooy3w" path="res://assets/environment/TreeA_1.webp" id="7_fw0cp"]
 [ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://scenes/player/Player.tscn" id="7_yw0gw"]
 [ext_resource type="Texture2D" uid="uid://bf0opc2u0navo" path="res://assets/environment/TreeA_2.webp" id="8_yw0gw"]
+[ext_resource type="PackedScene" uid="uid://dduy5s46nbmni" path="res://scenes/Prefabs/DialogManager.tscn" id="9_7s3vq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("4_h3lr4")
@@ -1014,7 +1015,7 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 polygon = PackedVector2Array(11604, -7853, 11629.839, -7868.564, 11666.206, -7879.079, 11709.145, -7884.8467, 11754.699, -7886.1675, 11798.917, -7883.343, 11837.843, -7876.672, 11867.521, -7866.4575, 11884, -7853, 11893.146, -7832.9336, 11902.477, -7804.785, 11910.503, -7771.6943, 11915.737, -7736.801, 11916.691, -7703.245, 11911.879, -7674.166, 11899.811, -7652.7046, 11879, -7642, 11740.871, -7633.451, 11670.582, -7639.811, 11642.521, -7646.877, 11622, -7657, 11608.939, -7674.4326, 11601.133, -7700.865, 11597.497, -7732.8076, 11596.951, -7766.769, 11604, -7853)
 
 [node name="Player" parent="." unique_id=483951007 instance=ExtResource("7_yw0gw")]
-position = Vector2(215, 460)
+position = Vector2(5897, -4271)
 gravity_scale = 4.0
 power_multiplier = 10.0
 max_drag = 200.0
@@ -1072,3 +1073,5 @@ script = ExtResource("7_7s3vq")
 warna_tengah = Color(0.34117648, 0.20784314, 0.14901961, 1)
 warna_layer = Array[Color]([Color(0.30588236, 0.19215687, 0.14117648, 1), Color(0, 0, 0, 1), Color(0.36078432, 0.19607843, 0.09411765, 1), Color(0, 0, 0, 1)])
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
+
+[node name="Dialog" parent="." unique_id=1026685107 instance=ExtResource("9_7s3vq")]
