@@ -30,7 +30,6 @@ base_cam_zoom = 0.7
 min_cam_zoom = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1310383384]
-enabled = false
 zoom = Vector2(0.7, 0.7)
 
 [node name="StoneCollision" type="CollisionPolygon2D" parent="." unique_id=2051454087]
