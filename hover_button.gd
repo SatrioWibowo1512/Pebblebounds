@@ -1,6 +1,7 @@
 extends TextureButton
 
-@onready var audio_player = $"../../Button"
+@export var ukuran: Vector2
+@export var ukuran2: Vector2
 
 func _ready():
 	pivot_offset = size / 2.0 
@@ -8,12 +9,8 @@ func _ready():
 	mouse_exited.connect(_on_exit)
 
 func _on_hover():
-	create_tween().tween_property(self, "scale", Vector2(1.1, 1.1), 0.1)
-	if audio_player and audio_player.stream:
-		audio_player.play()
+	create_tween().tween_property(self, "scale", ukuran2, 0.1)
 
 func _on_exit():
-	create_tween().tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
-
-func _on_pressed() -> void:
-	SceneManager.load_scene("res://scenes/levels/game_arena.tscn", 1.0) # Replace with function body.
+	create_tween().tween_property(self, "scale", ukuran, 0.1)
+ 

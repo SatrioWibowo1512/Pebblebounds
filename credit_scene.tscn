@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dxm7td4fsbhd3"]
+
+[ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="1_e17b7"]
+[ext_resource type="Script" uid="uid://bnljsw8jb1ytn" path="res://credit_scene.gd" id="1_ytlwl"]
+[ext_resource type="Texture2D" uid="uid://3xhjyeduyxbf" path="res://Group 114.png" id="2_ytlwl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1rf4v"]
+font = ExtResource("1_e17b7")
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqfyk"]
+font = ExtResource("1_e17b7")
+font_size = 50
+
+[node name="CreditScene" type="Node2D" unique_id=567385464]
+script = ExtResource("1_ytlwl")
+
+[node name="Label" type="Label" parent="." unique_id=1940953010]
+custom_maximum_size = Vector2(1000, -1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 1000.0
+offset_bottom = 1221.0
+grow_horizontal = 2
+pivot_offset = Vector2(500, 0)
+text = "Congratulations for completed the journey, began with a single jump and a very long fall.
+
+Your journey has never been easy. There have been so many failures, yet every time Pebble fell, you chose to get back up and jump once more.
+
+Perhaps that's what every journey truly is. Keep finding the courage even when the destination feels out of reach.
+
+If you've ever felt lost, if you've ever thought about giving up, we hope this little adventure reminds you that every small step you takes, still brings you closer to where you belong.
+
+Thank you for climbing with Pebble. Thank you for believing in him. And most importantly... thank you for bringing him home.
+
+We hope this small journey made you appreciate every little achievement along the way.
+
+From all of us, thank you for playing PebbleBound."
+label_settings = SubResource("LabelSettings_1rf4v")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Group114" type="Sprite2D" parent="." unique_id=499148696]
+position = Vector2(519, 1469)
+texture = ExtResource("2_ytlwl")
+
+[node name="JumpMade" type="Label" parent="Group114" unique_id=1852211505]
+custom_maximum_size = Vector2(300, -1)
+offset_left = -329.0
+offset_top = -88.0
+offset_right = -29.0
+offset_bottom = 61.0
+text = "100000000000"
+label_settings = SubResource("LabelSettings_nqfyk")
+autowrap_mode = 1
+
+[node name="TimeLabel" type="Label" parent="Group114" unique_id=1412041318]
+custom_maximum_size = Vector2(300, -1)
+offset_left = 33.0
+offset_top = -88.0
+offset_right = 333.0
+offset_bottom = 61.0
+label_settings = SubResource("LabelSettings_nqfyk")
+autowrap_mode = 1

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://be0w3k1pj67yn"]
+
+[ext_resource type="Script" uid="uid://b6absgpqnollj" path="res://blackscreen.gd" id="1_omu7o"]
+
+[node name="Blackscreen" type="Control" unique_id=808769130]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_omu7o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1920264700]
+layout_mode = 0
+offset_left = -372.0
+offset_top = -234.0
+offset_right = 1510.0
+offset_bottom = 838.0
+color = Color(0, 0, 0, 1)

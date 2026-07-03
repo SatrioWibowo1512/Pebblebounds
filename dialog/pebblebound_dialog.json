@@ -94,27 +94,12 @@
 	},
 	{
 	  "char": "Froggy",
-	  "text": "...",
-	  "time": 1.0
-	},
-	{
-	  "char": "Froggy",
-	  "text": "[b]Gulp[/b]",
-	  "time": 1.0
-	},
-	{
-	  "char": "Froggy",
-	  "text": "[shake rate=10 level=5]Blegh.[/shake]",
+	  "text": "[shake rate=10 level=5]Ouch!.[/shake]",
 	  "time": 1.5
 	},
 	{
-	  "char": "Froggy",
-	  "text": "Thought you were a flies.",
-	  "time": 2.0
-	},
-	{
 	  "char": "Pebble",
-	  "text": "[wave]Owww[/wave], what a life...",
+	  "text": "[wave]Owww[/wave].",
 	  "time": 2.0
 	},
 	{
@@ -129,13 +114,8 @@
 	},
 	{
 	  "char": "Pebble",
-	  "text": "I should be at the mountain peak, but because of that eagle, here I am, And I almost became frog food.",
+	  "text": "I should be at the mountain peak, but because of that eagle, here I am.",
 	  "time": 5.0
-	},
-	{
-	  "char": "Froggy",
-	  "text": "Oh you're coming from that peak up there, huh?",
-	  "time": 3.0
 	},
 	{
 	  "char": "Pebble",

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dc4452wxjjn21"]
 
 [ext_resource type="Texture2D" uid="uid://nrki44lk78y4" path="res://assets/GameLogo 1.png" id="1_7vrkn"]
+[ext_resource type="Script" uid="uid://b5v6udie2kpjs" path="res://main_menu.gd" id="1_dy7ct"]
 [ext_resource type="Shader" uid="uid://cu2vrnxp1o3kg" path="res://background.gdshader" id="2_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://bs3br47nbrekb" path="res://assets/UI/Button_Normal.webp" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://7l3wc5ulu5cb" path="res://assets/UI/Button_Hover.webp" id="4_glbon"]
@@ -8,6 +9,10 @@
 [ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="6_8qtwp"]
 [ext_resource type="AudioStream" uid="uid://fdi4gla33emq" path="res://assets/audios/bgm3.ogg" id="6_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://biabf7n2yw4dy" path="res://assets/sfx/JumpAudio.mp3" id="7_qe12f"]
+[ext_resource type="Texture2D" uid="uid://bkp2em1jvymlp" path="res://assets/UI/Music_Icon.webp" id="10_iotk1"]
+[ext_resource type="Texture2D" uid="uid://c7l2q1gjyr05e" path="res://assets/UI/Music_Icon_X.webp" id="11_w44g7"]
+[ext_resource type="Texture2D" uid="uid://cnqwemahi17yr" path="res://assets/UI/SFX_Icon.webp" id="12_cm266"]
+[ext_resource type="Texture2D" uid="uid://dok1wsmuh474b" path="res://assets/UI/SFX_Icon_X.webp" id="13_g8g3n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("2_fu7sn")
@@ -98,6 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dy7ct")
 
 [node name="Logo" type="TextureRect" parent="." unique_id=1993465495]
 layout_mode = 1
@@ -159,6 +165,8 @@ texture_hover = ExtResource("4_glbon")
 ignore_texture_size = true
 stretch_mode = 3
 script = ExtResource("5_glbon")
+ukuran = Vector2(1, 1)
+ukuran2 = Vector2(1.1, 1.1)
 
 [node name="Label" type="Label" parent="HBoxContainer/ContinueButton" unique_id=603145707]
 layout_mode = 0
@@ -182,6 +190,8 @@ texture_hover = ExtResource("4_glbon")
 ignore_texture_size = true
 stretch_mode = 3
 script = ExtResource("5_glbon")
+ukuran = Vector2(1, 1)
+ukuran2 = Vector2(1.1, 1.1)
 
 [node name="Label" type="Label" parent="HBoxContainer/NewGameButton" unique_id=451429383]
 layout_mode = 0
@@ -205,9 +215,53 @@ label_settings = SubResource("LabelSettings_1rf4v")
 [node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1165422136]
 stream = ExtResource("6_nlkkf")
 autoplay = true
+bus = &"Music"
 
 [node name="Button" type="AudioStreamPlayer" parent="." unique_id=573015242]
 stream = ExtResource("7_qe12f")
 volume_db = -3.0
+bus = &"SFX"
 
+[node name="MusicIcon" type="TextureButton" parent="." unique_id=1282656840]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8958333
+anchor_top = 0.055555556
+anchor_right = 0.9583333
+anchor_bottom = 0.16666667
+offset_right = 72.0
+offset_bottom = 72.0
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("10_iotk1")
+texture_disabled = ExtResource("11_w44g7")
+script = ExtResource("5_glbon")
+ukuran = Vector2(0.5, 0.5)
+ukuran2 = Vector2(0.6, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXIcon" type="TextureButton" parent="." unique_id=681427043]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8975694
+anchor_top = 0.18209876
+anchor_right = 0.9574653
+anchor_bottom = 0.28858024
+offset_right = 69.0
+offset_bottom = 69.0
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("12_cm266")
+texture_disabled = ExtResource("13_g8g3n")
+script = ExtResource("5_glbon")
+ukuran = Vector2(0.5, 0.5)
+ukuran2 = Vector2(0.6, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/ContinueButton" to="HBoxContainer/ContinueButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="MusicIcon" to="." method="_on_music_icon_pressed"]
+[connection signal="toggled" from="MusicIcon" to="." method="_on_music_icon_toggled"]
+[connection signal="pressed" from="SFXIcon" to="." method="_on_sfx_icon_pressed"]
+[connection signal="toggled" from="SFXIcon" to="." method="_on_sfx_icon_toggled"]

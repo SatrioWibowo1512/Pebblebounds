@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnvbcu0bdchde"]
 
 [ext_resource type="PackedScene" uid="uid://bdg2kmcyjdr10" path="res://scenes/Prefabs/event_trigger.tscn" id="1_8ql7b"]
+[ext_resource type="Script" uid="uid://dbi1fqajqy2ht" path="res://scenes/levels/game_arena.gd" id="1_vkjfa"]
 [ext_resource type="Texture2D" uid="uid://bnkhft6ya0hj5" path="res://assets/environment/TreeA_4.webp" id="2_jetvg"]
 [ext_resource type="Shader" uid="uid://cu2vrnxp1o3kg" path="res://background.gdshader" id="4_h3lr4"]
 [ext_resource type="Texture2D" uid="uid://cd5vlhsm74w3w" path="res://assets/platform/Wood_Short.webp" id="5_lmjql"]
@@ -35,6 +36,19 @@
 [ext_resource type="Texture2D" uid="uid://bb32uheit1ak1" path="res://assets/environment/Grass_3.webp" id="31_03rmu"]
 [ext_resource type="Texture2D" uid="uid://c4m7hrunam3kk" path="res://assets/environment/SecretSign.png" id="33_ogunq"]
 [ext_resource type="Texture2D" uid="uid://du45nwbtj1ush" path="res://assets/environment/Stone_5.webp" id="35_5o1ip"]
+[ext_resource type="PackedScene" uid="uid://blqmphktgeycb" path="res://scenes/eagle/eagle.tscn" id="35_qkwyb"]
+[ext_resource type="Script" uid="uid://cwjemrjph2kvx" path="res://scripts/main_camera.gd" id="36_qkwyb"]
+[ext_resource type="Script" uid="uid://biy6mlgt4ulq2" path="res://scenes/Prefabs/camera_trigger.gd" id="37_pxdw5"]
+[ext_resource type="Texture2D" uid="uid://hksiqw5hby5g" path="res://assets/froggy/Froggy_BaseIdle.webp" id="38_qvvyy"]
+[ext_resource type="Texture2D" uid="uid://bxm5fx5flcfam" path="res://assets/froggy/Froggy_OpenEyes.webp" id="39_f41q1"]
+[ext_resource type="Texture2D" uid="uid://daur5blsvswrt" path="res://assets/froggy/Froggy_Mouth.webp" id="40_f41q1"]
+[ext_resource type="Texture2D" uid="uid://rejjy82rwdo7" path="res://scenes/levels/Group 113.png" id="43_di7y8"]
+[ext_resource type="Script" uid="uid://b3vf85q6ptanv" path="res://scenes/levels/pause_button.gd" id="44_5xjlh"]
+[ext_resource type="PackedScene" uid="uid://d3s4c756rod7s" path="res://pause_menu.tscn" id="45_wv6cn"]
+[ext_resource type="Script" uid="uid://b1omsprc7axpc" path="res://scenes/levels/camera_trigger_ending.gd" id="46_3rgpr"]
+[ext_resource type="PackedScene" uid="uid://dxm7td4fsbhd3" path="res://credit_scene.tscn" id="47_4dwh5"]
+[ext_resource type="Texture2D" uid="uid://dvqsvthldcimx" path="res://assets/rocky/Rocky.webp" id="47_n4scn"]
+[ext_resource type="Texture2D" uid="uid://nlmfq2fhn7eo" path="res://assets/rocky/Stonya.webp" id="48_il3f0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("4_h3lr4")
@@ -362,10 +376,193 @@ _data = {
 }
 point_count = 16
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ql7b"]
-radius = 237.55
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxdw5"]
+size = Vector2(3130, 1776)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4tcf"]
+size = Vector2(2500, 1400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfyk"]
+size = Vector2(179, 2483)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnbau"]
+size = Vector2(1000, 378)
+
+[sub_resource type="Animation" id="Animation_4dwh5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23815, -16462)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CreditScene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23375, -16213)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CreditScene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CreditScene")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_data"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6sawk"]
+resource_name = "credit_scene"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10.104573),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(23815, -16462), Vector2(23815, -17584)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CreditScene:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(12.166667, 55.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(23319, -16213), Vector2(23319, -19069)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PauseMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1631461),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CreditScene:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(11.420226, 11.909665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(9.866667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove_player"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CreditScene")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 57.133335),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"update_data"
+}, {
+"args": [],
+"method": &"change_to_main_menu"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n4scn"]
+_data = {
+&"RESET": SubResource("Animation_4dwh5"),
+&"credit_scene": SubResource("Animation_6sawk")
+}
 
 [node name="GameArena" type="Node2D" unique_id=749722497]
+script = ExtResource("1_vkjfa")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1227253876]
+layer = 100
+
+[node name="TextureButton" type="TextureButton" parent="PauseMenu" unique_id=873121154]
+anchors_preset = -1
+anchor_left = -0.02604167
+anchor_top = -0.4830247
+anchor_right = 0.023958333
+anchor_bottom = -0.3941358
+offset_left = 578.0
+offset_top = 314.0
+offset_right = 664.4
+offset_bottom = 400.40002
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("43_di7y8")
+script = ExtResource("44_5xjlh")
+pause_menu_scene = ExtResource("45_wv6cn")
+metadata/_edit_use_anchors_ = true
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=251840684]
 z_index = -99
@@ -449,14 +646,14 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/FloatingPath4/StaticBody2D" unique_id=1453547281]
 polygon = PackedVector2Array(3432, -407, 3419.8506, -416.135, 3403.6846, -431.3557, 3366.9922, -472.94855, 3350.311, -495.76782, 3337.3037, -517.56714, 3329.8923, -536.56995, 3330, -551, 3342.958, -560.7877, 3369.7363, -567.51624, 3446.2817, -574.60706, 3549.2886, -579.8685, 3562, -583, 3566.1978, -589.3024, 3570.3303, -599.45087, 3585.9375, -652.3944, 3589.5415, -662.19055, 3593, -668, 3601.7544, -671.0598, 3619.7114, -673.26776, 3673.9685, -673.8689, 3737.2415, -667.2856, 3766.468, -660.51294, 3791, -651, 3810.9844, -632.89856, 3827.8628, -603.2144, 3841.2622, -565.9142, 3850.809, -524.9643, 3856.13, -484.33145, 3856.851, -447.9821, 3852.5989, -419.88275, 3843, -404, 3826.628, -399.48965, 3803.7568, -401.61618, 3747.2283, -418.29773, 3690.8354, -439.08038, 3668.1343, -446.33334, 3652, -449, 3538.5, -422, 3471.5313, -407, 3446.7305, -404.375, 3432, -407)
 
-[node name="FloatingPath5" type="Path2D" parent="FloatingPlatforms" unique_id=1551712521]
+[node name="Boss1Platform" type="Path2D" parent="FloatingPlatforms" unique_id=1551712521]
 curve = SubResource("Curve2D_dro1d")
 script = ExtResource("7_7s3vq")
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/FloatingPath5" unique_id=422514613]
+[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/Boss1Platform" unique_id=422514613]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/FloatingPath5/StaticBody2D" unique_id=718844757]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/Boss1Platform/StaticBody2D" unique_id=718844757]
 polygon = PackedVector2Array(6556, -688, 6551.1616, -699.0403, 6547.8647, -715.60266, 6545.5757, -757.22614, 6548.4985, -796.73663, 6551.717, -810.6576, 6556, -818, 6569.0615, -820.33264, 6595.8574, -820.88165, 6809, -813, 6822.6445, -818.57227, 6836.2188, -832.6406, 6849.1836, -852.3574, 6861, -874.875, 6886, -936, 6966.1113, -938.0714, 7025.625, -936.6428, 7048.3975, -934.1406, 7062, -930, 7068.5547, -916.1515, 7072.55, -887.87646, 7073.5215, -806.8135, 7066.2324, -724.34375, 7059.9023, -694.3103, 7052, -678, 7024.078, -672.3928, 6964.788, -670.692, 6556, -688)
 
 [node name="FloatingPath6" type="Path2D" parent="FloatingPlatforms" unique_id=525254765]
@@ -1029,7 +1226,7 @@ texture = ExtResource("5_lmjql")
 polygon = PackedVector2Array(-366.23438, -84, -346.95898, -90, 351.24023, -88, 368.375, -82, 385.5078, -70, 394.07422, -56, 400.5, -40, 400.5, 42, 396.2168, 52, 387.6504, 66, 374.79883, 78, 353.3828, 88, -349.0996, 88, -364.0918, 84, -379.08398, 76, -391.93555, 60, -398.35938, 48, -400.50195, 32, -400.50195, 0, -400.50195, -28, -400.50195, -44, -391.93555, -62, -383.3672, -72)
 
 [node name="Player" parent="." unique_id=483951007 instance=ExtResource("7_yw0gw")]
-position = Vector2(21458, -16173)
+position = Vector2(79, 461)
 gravity_scale = 4.0
 power_multiplier = 10.0
 max_drag = 200.0
@@ -1039,6 +1236,7 @@ spin_power = 1.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=58742513]
 stream = ExtResource("6_fw0cp")
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="env" type="Node2D" parent="." unique_id=623169762]
@@ -2836,26 +3034,24 @@ warna_layer = Array[Color]([Color(0.30588236, 0.19215687, 0.14117648, 1), Color(
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
 [node name="TriggerEvent" type="Node2D" parent="." unique_id=1152159223]
-
-[node name="EventTrigger" parent="TriggerEvent" unique_id=1322634344 instance=ExtResource("1_8ql7b")]
-position = Vector2(13978, -13893)
-dialog_id = "ending"
-
-[node name="CollisionShape2D" parent="TriggerEvent/EventTrigger" index="0" unique_id=463916615]
-shape = SubResource("CircleShape2D_8ql7b")
+position = Vector2(819, 603)
 
 [node name="event_trigger" parent="TriggerEvent" unique_id=113825712 instance=ExtResource("1_8ql7b")]
-position = Vector2(4512, -1202)
-dialog_id = "boss_battle_1"
+position = Vector2(13282, -14746)
+dialog_id = "before_ending"
 
-[node name="event_trigger2" parent="TriggerEvent" unique_id=835337025 instance=ExtResource("1_8ql7b")]
-position = Vector2(14558, -11545)
-dialog_id = "boss_battle_3"
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=260329777]
+[node name="CameraBoss2" type="Camera2D" parent="." unique_id=260329777]
 position = Vector2(13112, -11165)
 enabled = false
 zoom = Vector2(0.375, 0.375)
+
+[node name="CameraTrigger" type="Area2D" parent="CameraBoss2" unique_id=1164551725 node_paths=PackedStringArray("zone_camera")]
+script = ExtResource("37_pxdw5")
+zone_camera = NodePath("..")
+dialog_id = "boss_battle_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoss2/CameraTrigger" unique_id=558228962]
+shape = SubResource("RectangleShape2D_pxdw5")
 
 [node name="SecretSign" type="Sprite2D" parent="." unique_id=239336107]
 z_index = -1
@@ -2863,4 +3059,94 @@ position = Vector2(10811.001, -4124)
 rotation = 0.14396726
 texture = ExtResource("33_ogunq")
 
-[editable path="TriggerEvent/EventTrigger"]
+[node name="EagleBoss1" type="Node2D" parent="." unique_id=1092924771]
+
+[node name="Eagle" parent="EagleBoss1" unique_id=784865347 node_paths=PackedStringArray("patrol_marker", "ground_marker") instance=ExtResource("35_qkwyb")]
+position = Vector2(6161, -1429)
+patrol_marker = NodePath("../Marker2D")
+ground_marker = NodePath("../Marker2D2")
+base_speed = 200.0
+attack_speed = 400.0
+knockback_force = 2000.0
+
+[node name="Marker2D" type="Marker2D" parent="EagleBoss1" unique_id=1908407988]
+position = Vector2(5252, -1381)
+
+[node name="Marker2D2" type="Marker2D" parent="EagleBoss1" unique_id=452022201]
+position = Vector2(5252, -655)
+
+[node name="AdvancedTransitionCamera" type="Camera2D" parent="." unique_id=590207657]
+script = ExtResource("36_qkwyb")
+metadata/_custom_type_script = "uid://cwjemrjph2kvx"
+
+[node name="CameraBoss1" type="Camera2D" parent="." unique_id=439366094]
+position = Vector2(5207, -1212)
+zoom = Vector2(0.46, 0.46)
+
+[node name="CameraTrigger" type="Area2D" parent="CameraBoss1" unique_id=797080486 node_paths=PackedStringArray("zone_camera")]
+script = ExtResource("37_pxdw5")
+zone_camera = NodePath("..")
+dialog_id = "boss_battle_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoss1/CameraTrigger" unique_id=13541739]
+shape = SubResource("RectangleShape2D_i4tcf")
+
+[node name="EagleBoss2" type="Node2D" parent="." unique_id=978949144]
+position = Vector2(13110, -11168)
+
+[node name="Marker2D" type="Marker2D" parent="EagleBoss2" unique_id=706512607]
+position = Vector2(0, -372)
+
+[node name="Marker2D2" type="Marker2D" parent="EagleBoss2" unique_id=1565940511]
+position = Vector2(3, 131)
+
+[node name="Froggy" type="Sprite2D" parent="." unique_id=763903156]
+position = Vector2(-71.000015, 441)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("38_qvvyy")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Froggy" unique_id=565319257]
+position = Vector2(0, -117)
+texture = ExtResource("39_f41q1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Froggy" unique_id=479359740]
+position = Vector2(0, -60)
+texture = ExtResource("40_f41q1")
+
+[node name="WallBorder" type="StaticBody2D" parent="." unique_id=238716821]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBorder" unique_id=526702255]
+position = Vector2(-1548.5, -987.5)
+shape = SubResource("RectangleShape2D_nqfyk")
+
+[node name="CameraTrigger" type="Area2D" parent="." unique_id=2026519447 node_paths=PackedStringArray("zone_camera")]
+position = Vector2(23850, -16324)
+script = ExtResource("46_3rgpr")
+zone_camera = NodePath("../Camera2D")
+dialog_id = "ending"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraTrigger" unique_id=1116384948]
+shape = SubResource("RectangleShape2D_rnbau")
+
+[node name="Rocky" type="Sprite2D" parent="CameraTrigger" unique_id=531663161]
+position = Vector2(338.19925, 163.20018)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("47_n4scn")
+
+[node name="Stonya" type="Sprite2D" parent="CameraTrigger" unique_id=1520208348]
+position = Vector2(572, 164.99998)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("48_il3f0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=580508283]
+position = Vector2(23815, -16462)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D" unique_id=1401897654]
+libraries/ = SubResource("AnimationLibrary_n4scn")
+
+[node name="CreditScene" parent="." unique_id=567385464 instance=ExtResource("47_4dwh5")]
+visible = false
+position = Vector2(23375, -16213)
+
+[connection signal="pressed" from="PauseMenu/TextureButton" to="PauseMenu/TextureButton" method="_on_pressed"]
+[connection signal="body_entered" from="CameraTrigger" to="." method="_on_camera_trigger_body_entered"]

@@ -39,12 +39,19 @@ var player_ref: RigidBody2D
 # ================= SIKLUS UTAMA =================
 
 func _ready() -> void:
+	if GameManager.boss1_defeated == true:
+		change_state(State.ESCAPE)
+		return
+	
 	timer.timeout.connect(_on_timer_timeout)
 	change_state(State.IDLE)
 	await get_tree().create_timer(1.5).timeout
 	if is_inside_tree():
 		change_state(State.PATROL)
-
+	
+	if GameManager.boss1_defeated == true:
+		change_state(State.ESCAPE)
+		
 func _physics_process(_delta: float) -> void:
 	match current_state:
 		State.PATROL:
@@ -144,9 +151,13 @@ func _handle_returning() -> void:
 		change_state(State.PATROL)
 
 func _handle_escape() -> void:
-	# Bergerak ke kanan atas dengan kecepatan tinggi
 	velocity = Vector2(1, -1).normalized() * (base_speed * 3.5)
 	_update_facing(1)
+	await get_tree().create_timer(3.0).timeout
+	$"..".queue_free()
+	$"../../CameraBoss1".queue_free()
+	GameManager.boss1_defeated = true
+	DialogManager.start_dialog_by_id("finished_1")
 
 # ================= LOGIKA TARUNG & DETEKSI =================
 

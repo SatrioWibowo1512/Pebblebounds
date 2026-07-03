@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://d3s4c756rod7s"]
+
+[ext_resource type="Texture2D" uid="uid://bs3br47nbrekb" path="res://assets/UI/Button_Normal.webp" id="1_p81d2"]
+[ext_resource type="Script" uid="uid://d18qqff2j4hbl" path="res://pause_menu.gd" id="1_q2yj1"]
+[ext_resource type="Texture2D" uid="uid://7l3wc5ulu5cb" path="res://assets/UI/Button_Hover.webp" id="2_2nc7s"]
+[ext_resource type="Script" uid="uid://cjutnr2mwvae8" path="res://hover_button.gd" id="3_d3xb4"]
+[ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="4_mxa3g"]
+[ext_resource type="Texture2D" uid="uid://bkp2em1jvymlp" path="res://assets/UI/Music_Icon.webp" id="5_e8sti"]
+[ext_resource type="Texture2D" uid="uid://c7l2q1gjyr05e" path="res://assets/UI/Music_Icon_X.webp" id="6_q2yj1"]
+[ext_resource type="Texture2D" uid="uid://cnqwemahi17yr" path="res://assets/UI/SFX_Icon.webp" id="7_a32ks"]
+[ext_resource type="Texture2D" uid="uid://dok1wsmuh474b" path="res://assets/UI/SFX_Icon_X.webp" id="8_g7dbl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e8sti"]
+font = ExtResource("4_mxa3g")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1364011834]
+process_mode = 3
+script = ExtResource("1_q2yj1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2009001327]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="ContinueButton" type="TextureButton" parent="." unique_id=970433688]
+process_mode = 3
+custom_minimum_size = Vector2(320, 0)
+custom_maximum_size = Vector2(-1, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(155, 49)
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("1_p81d2")
+texture_pressed = ExtResource("2_2nc7s")
+texture_hover = ExtResource("2_2nc7s")
+ignore_texture_size = true
+stretch_mode = 3
+script = ExtResource("3_d3xb4")
+ukuran = Vector2(1, 1)
+ukuran2 = Vector2(1.1, 1.1)
+
+[node name="Label" type="Label" parent="ContinueButton" unique_id=953775740]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028125
+anchor_top = 0.1
+anchor_right = 0.940625
+anchor_bottom = 0.76
+pivot_offset = Vector2(145, 37)
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_e8sti")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicIcon" type="TextureButton" parent="." unique_id=795816974]
+anchors_preset = -1
+anchor_left = 0.39322916
+anchor_top = 0.3919753
+anchor_right = 0.45572916
+anchor_bottom = 0.50308645
+offset_left = -38.0
+offset_top = -32.0
+offset_right = 34.0
+offset_bottom = 39.99997
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(72, 68)
+toggle_mode = true
+texture_normal = ExtResource("5_e8sti")
+texture_disabled = ExtResource("6_q2yj1")
+script = ExtResource("3_d3xb4")
+ukuran = Vector2(0.5, 0.5)
+ukuran2 = Vector2(0.6, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXIcon" type="TextureButton" parent="." unique_id=246130077]
+anchors_preset = -1
+anchor_left = 0.5416667
+anchor_top = 0.3919753
+anchor_right = 0.6015625
+anchor_bottom = 0.49845678
+offset_left = -42.0
+offset_top = -35.0
+offset_right = 27.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(72, 70)
+toggle_mode = true
+texture_normal = ExtResource("7_a32ks")
+texture_disabled = ExtResource("8_g7dbl")
+script = ExtResource("3_d3xb4")
+ukuran = Vector2(0.5, 0.5)
+ukuran2 = Vector2(0.6, 0.6)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ContinueButton" to="ContinueButton" method="_on_pressed"]
+[connection signal="toggled" from="MusicIcon" to="." method="_on_music_icon_toggled"]
+[connection signal="toggled" from="SFXIcon" to="." method="_on_sfx_icon_toggled"]

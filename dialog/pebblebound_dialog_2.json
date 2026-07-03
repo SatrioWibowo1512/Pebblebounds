@@ -1,0 +1,363 @@
+{
+	"before_the_journey": [
+	{
+	  "char": "Pebble",
+	  "text": "Now it's time to say goodbye and thank you to master.",
+	  "time": 1.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "I know the climb won't be easy.",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "But I have chosen this path.",
+	  "time": 1.5
+	},
+	{
+	  "char": "Froggy",
+	  "text": "Then I won't stop climbing.",
+	  "time": 1.5
+	}],
+  "opening_1": [
+	{
+	  "char": "Pebble",
+	  "text": "I don't know how long I've been here.",
+	  "time": 2.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Mom said, one day, I'll become a strong stone, just like Dad.",
+	  "time": 2.2
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[wave amp=20 freq=5]I've always wanted to see the whole world.[/wave]",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Because there’s still so much of the world I haven’t seen!",
+	  "time": 2.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "And so it happened, an eagle snatched me far away from my parents...",
+	  "time": 2.2
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Mom was right, the world is not that safe for a stone like us.",
+	  "time": 2.2
+	}
+  ],
+  "training": [
+	{
+	  "char": "Pebble",
+	  "text": "You must be wondering why a rock like me can jump.",
+	  "time": 2.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "After that incident, I met my master. And he taught me how to become a extraordinary stone.",
+	  "time": 2.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "All this time, he has been teaching me the way back home...",
+	  "time": 2.2
+	},
+	{
+	  "char": "Pebble",
+	  "text": "And now, I'm a jumping stone",
+	  "time": 1.2
+	}],
+  "dialog_climbing_1": [
+	{
+	  "char": "Pebble",
+	  "text": "The peak...",
+	  "time": 1.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "...It's closer.",
+	  "time": 1.0
+	}
+  ],
+  "dialog_climbing_2": [
+	{
+	  "char": "Pebble",
+	  "text": "I wonder do they still remember me?",
+	  "time": 1.8
+	}
+  ],
+  "dialog_climbing_3": [
+	{
+	  "char": "Pebble",
+	  "text": "[b]Be the best![/b]",
+	  "time": 1.0
+	}
+  ],
+  "dialog_climbing_4": [
+	{
+	  "char": "Pebble",
+	  "text": "Never look down.",
+	  "time": 1.0
+	}
+  ],
+  "little_fall_1": [
+	{
+	  "char": "Pebble",
+	  "text": "Its okay",
+	  "time": 0.8
+	}
+  ],
+  "little_fall_2": [
+	{
+	  "char": "Pebble",
+	  "text": "[wave]I can do it![/wave]",
+	  "time": 1.0
+	}
+  ],
+  "little_fall_3": [
+	{
+	  "char": "Pebble",
+	  "text": "Whoopsiee",
+	  "time": 0.8
+	}
+  ],
+  "little_fall_4": [
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=10 level=3]Ouch[/shake]",
+	  "time": 0.7
+	}
+  ],
+  "big_fall_1": [
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=10 level=5]That’s a long way down[/shake]",
+	  "time": 1.5
+	}
+  ],
+  "big_fall_2": [
+	{
+	  "char": "Pebble",
+	  "text": "And... back here again",
+	  "time": 1.5
+	}
+  ],
+  "big_fall_3": [
+	{
+	  "char": "Pebble",
+	  "text": "...",
+	  "time": 0.8
+	}
+  ],
+  "big_fall_4": [
+	{
+	  "char": "Pebble",
+	  "text": "[wave amp=10 freq=2]Mom... Dad...[/wave]",
+	  "time": 1.5
+	}
+  ],
+  "boss_battle_1": [
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=15 level=5]That eagle, the one who threw me and made me end up like this.[/shake]",
+	  "time": 3.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Because of him, I lost my home.",
+	  "time": 1.8
+	}
+  ],
+  "boss_battle_2": [
+	{
+	  "char": "Pebble",
+	  "text": "Let's end this.",
+	  "time": 1.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Make him say goodbye to this mountain!",
+	  "time": 2.0
+	}
+  ],
+  "hit_phrases_1": [
+	{
+	  "char": "Pebble",
+	  "text": "Almost!",
+	  "time": 0.8
+	}
+  ],
+  "hit_phrases_2": [
+	{
+	  "char": "Pebble",
+	  "text": "Sorry!",
+	  "time": 0.8
+	}
+  ],
+  "hit_phrases_3": [
+	{
+	  "char": "Pebble",
+	  "text": "Gotcha!",
+	  "time": 0.8
+	}
+  ],
+  "hit_phrases_4": [
+	{
+	  "char": "Pebble",
+	  "text": "Oops, didn't mean to",
+	  "time": 1.0
+	}
+  ],
+  "get_hit_phrases_1": [
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=15 level=6]Ouch[/shake]",
+	  "time": 0.7
+	}
+  ],
+  "get_hit_phrases_2": [
+	{
+	  "char": "Pebble",
+	  "text": "Not again",
+	  "time": 1.0
+	}
+  ],
+  "get_hit_phrases_3": [
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=20 level=8]Ow![/shake]",
+	  "time": 0.7
+	}
+  ],
+  "get_hit_phrases_4": [
+	{
+	  "char": "Pebble",
+	  "text": "I’m okay!",
+	  "time": 1.0
+	}
+  ],
+  "finished_1": [
+	{
+	  "char": "Pebble",
+	  "text": "You can’t stop me anymore.",
+	  "time": 1.8
+	}
+  ],
+  "finished_2": [
+	{
+	  "char": "Pebble",
+	  "text": "I just want to go home.",
+	  "time": 1.5
+	}
+  ],
+  "before_ending": [
+	{
+	  "char": "Pebble",
+	  "text": "[wave]Mom... Dad... I’m coming...[/wave]",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[wave amp=15 freq=3]I miss Mom’s cooking so much...[/wave] I just want to taste it again right now.",
+	  "time": 2.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "I hope they’re doing well.",
+	  "time": 1.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[shake rate=5 level=2]What if they have a new pebble and forget about me?[/shake]",
+	  "time": 2.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "...No.",
+	  "time": 0.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Mom would never do that.",
+	  "time": 1.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "...Right?",
+	  "time": 0.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Dad always said he'd wait for me.",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "I wonder if they still tell stories at sunset.",
+	  "time": 2.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Do they still sit on our favorite cliff?",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "...",
+	  "time": 0.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[wave]I miss home.[/wave]",
+	  "time": 1.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "Just a little farther...",
+	  "time": 1.5
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[wave]Please... wait for me.[/wave]",
+	  "time": 1.8
+	}
+  ],
+  "ending": [
+	{
+	  "char": "Pebble",
+	  "text": "[wave]Home...[/wave]",
+	  "time": 1.0
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[wave]Mom... Dad...[/wave]",
+	  "time": 1.5
+	},
+	{
+	  "char": "Stonya",
+	  "text": "[shake rate=10 level=4]Honey? Is that you?[/shake]",
+	  "time": 1.8
+	},
+	{
+	  "char": "Rocky",
+	  "text": "[shake rate=15 level=5]Impossible, who are you!?[/shake]",
+	  "time": 1.8
+	},
+	{
+	  "char": "Pebble",
+	  "text": "[font_size=70][shake rate=25 level=12]MOM!!! DAD!!![/shake][/font_size]",
+	  "time": 1.5
+	},
+	{
+	  "char": "Rocky",
+	  "text": "[font_size=70][shake rate=25 level=12]OH!!! My son![/shake][/font_size]",
+	  "time": 1.5
+	}
+  ]
+}

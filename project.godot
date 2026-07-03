@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Pebblebounds"
-run/main_scene="uid://cnvbcu0bdchde"
+run/main_scene="uid://be0w3k1pj67yn"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://45ht06nuayhs"
 
 [autoload]
 
@@ -25,7 +28,7 @@ GameManager="*uid://bc6oyikpc345v"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [global_group]
 
