@@ -1,7 +1,7 @@
 {
   "opening": [
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Once upon a time at the peaceful mountain peak. A family of stones rests beneath the warm morning sun.",
 	  "time": 4.5
 	},
@@ -11,7 +11,7 @@
 	  "time": 3.0
 	},
 	{
-	  "char": "Stoney",
+	  "char": "Stonya",
 	  "text": "One day, you'll become a strong stone, just like us.",
 	  "time": 3.0
 	},
@@ -26,7 +26,7 @@
 	  "time": 2.0
 	},
 	{
-	  "char": "Stoney",
+	  "char": "Stonya",
 	  "text": "Okay Honey, playing time is over, lets go home and have lunch.",
 	  "time": 3.5
 	},
@@ -46,7 +46,7 @@
 	  "time": 3.0
 	},
 	{
-	  "char": "Stoney",
+	  "char": "Stonya",
 	  "text": "Pebble, the world is [b]not that safe[/b] for a stone like us.",
 	  "time": 3.5
 	},
@@ -56,12 +56,12 @@
 	  "time": 1.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "A giant shadow sweeps across the mountain.",
 	  "time": 3.0
 	},
 	{
-	  "char": "Stoney",
+	  "char": "Stonya",
 	  "text": "...",
 	  "time": 1.0
 	},
@@ -71,7 +71,7 @@
 	  "time": 1.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "A massive eagle swoops in and snatches Little Pebble.",
 	  "time": 3.5
 	},
@@ -81,7 +81,7 @@
 	  "time": 2.0
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "The eagle flies higher and higher.",
 	  "time": 3.0
 	},
@@ -91,12 +91,11 @@
 	  "time": 1.5
 	},
 	{
-	  "char": "Pebble",
 	  "text": "[font_size=26][shake rate=25 level=12]LET ME GO![/shake][/font_size]",
 	  "time": 2.0
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "He struggles with all his strength. The eagle loses its grip. And... Little Pebble falls.",
 	  "time": 5.0
 	},
@@ -111,7 +110,7 @@
 	  "time": 2.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Seconds before hitting the ground...",
 	  "time": 2.0
 	},
@@ -121,7 +120,7 @@
 	  "time": 2.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "A frog accidentally catches him with its tongue.",
 	  "time": 3.0
 	},
@@ -141,7 +140,7 @@
 	  "time": 1.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "The pebble is spat back out.",
 	  "time": 2.0
 	},
@@ -181,7 +180,7 @@
 	  "time": 2.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Pebble tried to climb, but he couldn't.",
 	  "time": 2.5
 	},
@@ -196,7 +195,7 @@
 	  "time": 4.0
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Years passed. The little pebble never seen his home again for a long time. But he did find... a way.",
 	  "time": 5.5
 	}
@@ -273,11 +272,6 @@
 	  "char": "Pebble",
 	  "text": "...Master",
 	  "time": 1.5
-	},
-	{
-	  "char": "Narator",
-	  "text": "The frog stays silent.",
-	  "time": 2.0
 	},
 	{
 	  "char": "Froggy",
@@ -366,11 +360,6 @@
 	  "char": "Pebble",
 	  "text": "[shake rate=5 level=3]W-wait...[/shake]",
 	  "time": 1.5
-	},
-	{
-	  "char": "Narator",
-	  "text": "Pebble sees an eagle",
-	  "time": 2.0
 	},
 	{
 	  "char": "Pebble",
@@ -556,7 +545,7 @@
   ],
   "ending": [
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "The summit finally comes in to view.",
 	  "time": 2.5
 	},
@@ -566,7 +555,7 @@
 	  "time": 1.5
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Pebble saw someone he hadn’t seen in a long time",
 	  "time": 3.5
 	},
@@ -576,12 +565,12 @@
 	  "time": 2.0
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "His parent slowly turn around",
 	  "time": 2.5
 	},
 	{
-	  "char": "Stoney",
+	  "char": "Stonya",
 	  "text": "[shake rate=10 level=4]Honey? Is that you?[/shake]",
 	  "time": 2.5
 	},
@@ -601,7 +590,7 @@
 	  "time": 2.0
 	},
 	{
-	  "char": "Narator",
+	  "char": "",
 	  "text": "Pebble jump with all his strength, but he forgot something. He crashes into his father.",
 	  "time": 4.5
 	},
@@ -619,11 +608,6 @@
 	  "char": "Rocky",
 	  "text": "[font_size=28][shake rate=30 level=15]AAAAAAAAAAA.[/shake][/font_size]",
 	  "time": 2.0
-	},
-	{
-	  "char": "Narator",
-	  "text": "Splash",
-	  "time": 1.5
 	},
 	{
 	  "char": "Pebble",
