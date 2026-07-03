@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://cnvbcu0bdchde"]
 
 [ext_resource type="Shader" uid="uid://cu2vrnxp1o3kg" path="res://background.gdshader" id="4_h3lr4"]
-[ext_resource type="AudioStream" uid="uid://fdi4gla33emq" path="res://assets/audios/bgm3.ogg" id="5_pkabp"]
 [ext_resource type="Script" uid="uid://b4wntnvlfwrng" path="res://scenes/Prefabs/ground_path.gd" id="6_0f34n"]
 [ext_resource type="Texture2D" uid="uid://dm2uxkfx4ek3u" path="res://assets/environment/BushA.webp" id="6_7s3vq"]
+[ext_resource type="AudioStream" uid="uid://csfhb1i6pj7bu" path="res://assets/audios/bgm1.ogg" id="6_fw0cp"]
 [ext_resource type="Script" uid="uid://sjn2bo2b0m7d" path="res://scenes/Prefabs/floating_path.gd" id="7_7s3vq"]
 [ext_resource type="Texture2D" uid="uid://cc3w0xf6ooy3w" path="res://assets/environment/TreeA_1.webp" id="7_fw0cp"]
 [ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://scenes/player/Player.tscn" id="7_yw0gw"]
 [ext_resource type="Texture2D" uid="uid://bf0opc2u0navo" path="res://assets/environment/TreeA_2.webp" id="8_yw0gw"]
 [ext_resource type="PackedScene" uid="uid://dduy5s46nbmni" path="res://scenes/Prefabs/DialogManager.tscn" id="9_7s3vq"]
+[ext_resource type="Texture2D" uid="uid://dwjfk6mqw4fpm" path="res://assets/rocky/Rocky_House.webp" id="10_yw0gw"]
+[ext_resource type="Script" uid="uid://c0ee7g3petcgi" path="res://scenes/levels/trigger_dialog_test.gd" id="12_8ql7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("4_h3lr4")
@@ -361,10 +363,10 @@ z_index = -99
 
 [node name="ColorRect2" type="ColorRect" parent="Parallax2D" unique_id=1400652437]
 material = SubResource("ShaderMaterial_1rf4v")
-offset_left = -4532.0
-offset_top = -18556.0
-offset_right = 26992.0
-offset_bottom = 2551.0
+offset_left = -4674.0
+offset_top = -18411.0
+offset_right = 26850.0
+offset_bottom = 2696.0
 
 [node name="GroundPlatforms" type="Node2D" parent="." unique_id=1783715465]
 
@@ -1015,7 +1017,7 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 polygon = PackedVector2Array(11604, -7853, 11629.839, -7868.564, 11666.206, -7879.079, 11709.145, -7884.8467, 11754.699, -7886.1675, 11798.917, -7883.343, 11837.843, -7876.672, 11867.521, -7866.4575, 11884, -7853, 11893.146, -7832.9336, 11902.477, -7804.785, 11910.503, -7771.6943, 11915.737, -7736.801, 11916.691, -7703.245, 11911.879, -7674.166, 11899.811, -7652.7046, 11879, -7642, 11740.871, -7633.451, 11670.582, -7639.811, 11642.521, -7646.877, 11622, -7657, 11608.939, -7674.4326, 11601.133, -7700.865, 11597.497, -7732.8076, 11596.951, -7766.769, 11604, -7853)
 
 [node name="Player" parent="." unique_id=483951007 instance=ExtResource("7_yw0gw")]
-position = Vector2(5897, -4271)
+position = Vector2(9234, -12182)
 gravity_scale = 4.0
 power_multiplier = 10.0
 max_drag = 200.0
@@ -1023,7 +1025,7 @@ stop_threshold = 50.0
 spin_power = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=58742513]
-stream = ExtResource("5_pkabp")
+stream = ExtResource("6_fw0cp")
 autoplay = true
 parameters/looping = true
 
@@ -1063,6 +1065,12 @@ position = Vector2(-378, 373)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_yw0gw")
 
+[node name="RockyHouse" type="Sprite2D" parent="env" unique_id=901896036]
+z_index = -1
+position = Vector2(24378, -16395)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_yw0gw")
+
 [node name="Background" type="Node2D" parent="." unique_id=434097486]
 modulate = Color(0.7792914, 0.7792914, 0.7792913, 1)
 z_index = -1
@@ -1075,3 +1083,11 @@ warna_layer = Array[Color]([Color(0.30588236, 0.19215687, 0.14117648, 1), Color(
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
 [node name="Dialog" parent="." unique_id=1026685107 instance=ExtResource("9_7s3vq")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2131360562]
+script = ExtResource("12_8ql7b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=876870797]
+polygon = PackedVector2Array(16078, -14485, 16153, -14293, 16376, -14348, 16275, -14555)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
