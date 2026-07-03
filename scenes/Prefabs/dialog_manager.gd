@@ -11,26 +11,37 @@ var typing_speed: float = 0.03
 var default_scale: Vector2
 var base_position: Vector2
 var time_passed: float = 0.0
+var all_dialogs: Dictionary = {}
 
 func _ready():
 	visible = false
 	default_scale = dialog_box.scale
 	base_position = dialog_box.position
+	load_dialog_data()
 
 func _process(delta: float):
 	if is_active:
 		time_passed += delta
+		# Efek Idle: Melayang & rotasi mikro ikut menyeret RichTextLabel
 		dialog_box.position.y = base_position.y + sin(time_passed * 3.0) * 6.0
 		dialog_box.rotation = sin(time_passed * 2.0) * deg_to_rad(1.5)
 
+func load_dialog_data():
+	var file_path = "res://dialog/pebblebound_dialog.json"
+	if FileAccess.file_exists(file_path):
+		var file = FileAccess.open(file_path, FileAccess.READ)
+		var json_text = file.get_as_text()
+		all_dialogs = JSON.parse_string(json_text)
+
+func start_dialog_by_id(dialog_id: String):
+	if is_active or not all_dialogs.has(dialog_id): return
+	start_dialog(all_dialogs[dialog_id])
+
 func start_dialog(data: Array):
-	if is_active: return
 	dialog_queue = data
 	current_index = 0
 	is_active = true
 	visible = true
-	
-	# Langsung panggil show_dialog tanpa menganimasikannya di sini
 	show_dialog()
 
 func show_dialog():
@@ -40,12 +51,12 @@ func show_dialog():
 		
 	var current_line = dialog_queue[current_index]
 	
-	# 1. Ganti tekstur terlebih dahulu saat box belum membesar/terlihat
+	# 1. Ganti tekstur karakter saat box belum terlihat/membesar
 	var texture_path = "res://assets/dialog/DialogBox_" + current_line["char"] + ".webp"
 	if ResourceLoader.exists(texture_path):
 		dialog_box.texture = load(texture_path)
 		
-	# 2. Jika ini adalah baris pertama, jalankan animasi pop-in SETELAH tekstur berubah
+	# 2. Pop-In hanya untuk baris pertama setelah tekstur disesuaikan
 	if current_index == 0:
 		dialog_box.pivot_offset = dialog_box.size / 2
 		dialog_box.scale = Vector2.ZERO
@@ -53,7 +64,7 @@ func show_dialog():
 		tween.tween_property(dialog_box, "scale", default_scale, 0.4)
 		await tween.finished
 		
-	# 3. Mulai efek mengetik teks
+	# 3. Teks mulai mengetik maju setelah box selesai Pop-In
 	text_label.text = current_line["text"]
 	text_label.visible_characters = 0
 	
@@ -62,6 +73,7 @@ func show_dialog():
 	tween_text.tween_property(text_label, "visible_characters", text_label.text.length(), duration)
 	await tween_text.finished
 	
+	# 4. Tunggu durasi membaca sebelum lanjut otomatis
 	var display_time = current_line.get("time", 2.0)
 	await get_tree().create_timer(display_time).timeout
 	
@@ -77,7 +89,6 @@ func end_dialog():
 	
 	dialog_box.position = base_position
 	dialog_box.rotation = 0
-	
 	visible = false
 	is_active = false
 	dialog_queue.clear()
