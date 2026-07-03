@@ -32,7 +32,6 @@ func load_dialog_data():
 		var file = FileAccess.open(file_path, FileAccess.READ)
 		var json_text = file.get_as_text()
 		all_dialogs = JSON.parse_string(json_text)
-
 func start_dialog_by_id(dialog_id: String):
 	if is_active or not all_dialogs.has(dialog_id): return
 	start_dialog(all_dialogs[dialog_id])

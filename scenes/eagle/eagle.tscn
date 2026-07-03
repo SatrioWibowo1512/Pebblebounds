@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://blqmphktgeycb"]
+
+[ext_resource type="Texture2D" uid="uid://cmjh7nqju4w8x" path="res://assets/Eagle.webp" id="1_3s5rv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfma5"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(0, 0, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxndf"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(856, 0, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7mtx"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(1712, 0, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mkxk"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(1712, 998, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhkc0"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(856, 998, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sumb"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(0, 998, 856, 998)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rf4v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfma5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxndf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7mtx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxndf")
+}],
+"loop": 1,
+"name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mkxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhkc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sumb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhkc0")
+}],
+"loop": 1,
+"name": &"FlyTake",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Eagle" type="Node2D" unique_id=163709108]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=994144802]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1824693757]
+
+[node name="Visual" type="Node2D" parent="." unique_id=662532868]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=194738088]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" unique_id=776206117]
+sprite_frames = SubResource("SpriteFrames_1rf4v")
+animation = &"FlyTake"
+frame_progress = 0.8076514
