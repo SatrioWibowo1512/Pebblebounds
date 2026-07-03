@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://blqmphktgeycb"]
 
 [ext_resource type="Texture2D" uid="uid://cmjh7nqju4w8x" path="res://assets/Eagle.webp" id="1_3s5rv"]
+[ext_resource type="Script" uid="uid://b7wk65q08ncgl" path="res://scenes/eagle/eagle.gd" id="1_rfma5"]
+[ext_resource type="Script" uid="uid://jhofri3kxf4t" path="res://scenes/eagle/visual.gd" id="2_cxndf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s5rv"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(856, 1996, 856, 998)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6d7b"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(1712, 1996, 856, 998)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfma5"]
 atlas = ExtResource("1_3s5rv")
@@ -26,8 +36,28 @@ region = Rect2(856, 998, 856, 998)
 atlas = ExtResource("1_3s5rv")
 region = Rect2(0, 998, 856, 998)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wie10"]
+atlas = ExtResource("1_3s5rv")
+region = Rect2(2568, 1996, 856, 998)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1rf4v"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s5rv")
+}],
+"loop": 1,
+"name": &"Attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6d7b")
+}],
+"loop": 1,
+"name": &"Attack2",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rfma5")
@@ -43,7 +73,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Fly",
-"speed": 5.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,7 +89,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_yhkc0")
 }],
 "loop": 1,
-"name": &"FlyTake",
+"name": &"Idle",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wie10")
+}],
+"loop": 1,
+"name": &"Rest",
 "speed": 5.0
 }, {
 "frames": [],
@@ -68,17 +106,55 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Eagle" type="Node2D" unique_id=163709108]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7mtx"]
+size = Vector2(211, 280)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=994144802]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mkxk"]
+size = Vector2(282, 304)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1824693757]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s5rv"]
+size = Vector2(316, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhkc0"]
+size = Vector2(328, 129)
+
+[node name="Eagle" type="CharacterBody2D" unique_id=784865347]
+script = ExtResource("1_rfma5")
 
 [node name="Visual" type="Node2D" parent="." unique_id=662532868]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("2_cxndf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual" unique_id=194738088]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visual" unique_id=776206117]
 sprite_frames = SubResource("SpriteFrames_1rf4v")
-animation = &"FlyTake"
-frame_progress = 0.8076514
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShapeAttack1" type="CollisionShape2D" parent="." unique_id=1683087615]
+visible = false
+position = Vector2(16.5, -10)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_f7mtx")
+
+[node name="CollisionShapeAttack2" type="CollisionShape2D" parent="." unique_id=563654174]
+visible = false
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_8mkxk")
+
+[node name="CollisionShapeRest" type="CollisionShape2D" parent="." unique_id=2126117045]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_3s5rv")
+
+[node name="Timer" type="Timer" parent="." unique_id=179148076]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=300120206]
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=64626202]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1546549561]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_yhkc0")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurtbox_body_entered"]

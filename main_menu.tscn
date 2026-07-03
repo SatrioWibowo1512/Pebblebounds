@@ -5,16 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bs3br47nbrekb" path="res://assets/UI/Button_Normal.webp" id="3_jix8l"]
 [ext_resource type="Texture2D" uid="uid://7l3wc5ulu5cb" path="res://assets/UI/Button_Hover.webp" id="4_glbon"]
 [ext_resource type="Script" uid="uid://cjutnr2mwvae8" path="res://hover_button.gd" id="5_glbon"]
+[ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="6_8qtwp"]
 [ext_resource type="AudioStream" uid="uid://fdi4gla33emq" path="res://assets/audios/bgm3.ogg" id="6_nlkkf"]
 [ext_resource type="AudioStream" uid="uid://biabf7n2yw4dy" path="res://assets/sfx/JumpAudio.mp3" id="7_qe12f"]
-[ext_resource type="Shader" uid="uid://bok2xmdm7s68" path="res://transition.gdshader" id="8_8qtwp"]
-[ext_resource type="Texture2D" uid="uid://dgmx8w5ikjh0f" path="res://assets/player/Pebble_Base.webp" id="9_dy7ct"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqfyk"]
-shader = ExtResource("8_8qtwp")
-shader_parameter/mask_texture = ExtResource("9_dy7ct")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/scale = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("2_fu7sn")
@@ -50,57 +43,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(302.5, 75)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Transition:material:shader_parameter/scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Transition:z_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_0o4t1"]
 resource_name = "intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition:material:shader_parameter/scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 2.230000105925]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition:z_index")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0, 1),
-"update": 1,
-"values": [1, -1]
-}
 
 [sub_resource type="Animation" id="Animation_fu7sn"]
 resource_name = "logo_wobblke"
@@ -138,20 +83,16 @@ _data = {
 &"logo_wobble": SubResource("Animation_fu7sn")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_nqfyk"]
+font = ExtResource("6_8qtwp")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_1rf4v"]
 font_size = 21
 
 [node name="MainMenu" type="Control" unique_id=753737474]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Transition" type="ColorRect" parent="." unique_id=1366935808]
-material = SubResource("ShaderMaterial_nqfyk")
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -188,7 +129,7 @@ grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=767032658]
 libraries/ = SubResource("AnimationLibrary_jix8l")
-autoplay = &"intro"
+autoplay = &"logo_wobble"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1517964980]
 layout_mode = 1
@@ -219,6 +160,16 @@ ignore_texture_size = true
 stretch_mode = 3
 script = ExtResource("5_glbon")
 
+[node name="Label" type="Label" parent="HBoxContainer/ContinueButton" unique_id=603145707]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 301.0
+offset_bottom = 78.0
+text = "Continue"
+label_settings = SubResource("LabelSettings_nqfyk")
+horizontal_alignment = 1
+
 [node name="NewGameButton" type="TextureButton" parent="HBoxContainer" unique_id=1288578749]
 custom_minimum_size = Vector2(320, 0)
 custom_maximum_size = Vector2(-1, 100)
@@ -232,18 +183,15 @@ ignore_texture_size = true
 stretch_mode = 3
 script = ExtResource("5_glbon")
 
-[node name="QuitButton" type="TextureButton" parent="HBoxContainer" unique_id=1897522442]
-custom_minimum_size = Vector2(320, 0)
-custom_maximum_size = Vector2(-1, 100)
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("3_jix8l")
-texture_pressed = ExtResource("4_glbon")
-texture_hover = ExtResource("4_glbon")
-ignore_texture_size = true
-stretch_mode = 3
-script = ExtResource("5_glbon")
+[node name="Label" type="Label" parent="HBoxContainer/NewGameButton" unique_id=451429383]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = 301.0
+offset_bottom = 78.0
+text = "New Game"
+label_settings = SubResource("LabelSettings_nqfyk")
+horizontal_alignment = 1
 
 [node name="VersionLabel" type="Label" parent="." unique_id=1608738380]
 layout_mode = 0
@@ -261,3 +209,5 @@ autoplay = true
 [node name="Button" type="AudioStreamPlayer" parent="." unique_id=573015242]
 stream = ExtResource("7_qe12f")
 volume_db = -3.0
+
+[connection signal="pressed" from="HBoxContainer/ContinueButton" to="HBoxContainer/ContinueButton" method="_on_pressed"]

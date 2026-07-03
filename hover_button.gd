@@ -14,3 +14,6 @@ func _on_hover():
 
 func _on_exit():
 	create_tween().tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
+
+func _on_pressed() -> void:
+	SceneManager.load_scene("res://scenes/levels/game_arena.tscn", 1.0) # Replace with function body.

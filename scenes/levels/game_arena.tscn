@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://cnvbcu0bdchde"]
 
-[ext_resource type="PackedScene" uid="uid://bdg2kmcyjdr10" path="res://scenes/Prefabs/event_trigger.tscn" id="1_8ql7b"]
 [ext_resource type="Shader" uid="uid://cu2vrnxp1o3kg" path="res://background.gdshader" id="4_h3lr4"]
 [ext_resource type="Script" uid="uid://b4wntnvlfwrng" path="res://scenes/Prefabs/ground_path.gd" id="6_0f34n"]
 [ext_resource type="Texture2D" uid="uid://dm2uxkfx4ek3u" path="res://assets/environment/BushA.webp" id="6_7s3vq"]
@@ -9,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cc3w0xf6ooy3w" path="res://assets/environment/TreeA_1.webp" id="7_fw0cp"]
 [ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://scenes/player/Player.tscn" id="7_yw0gw"]
 [ext_resource type="Texture2D" uid="uid://bf0opc2u0navo" path="res://assets/environment/TreeA_2.webp" id="8_yw0gw"]
+[ext_resource type="PackedScene" uid="uid://c3denayajqw7d" path="res://scenes/Prefabs/camera_trigger.tscn" id="10_8ql7b"]
 [ext_resource type="Texture2D" uid="uid://dwjfk6mqw4fpm" path="res://assets/rocky/Rocky_House.webp" id="10_yw0gw"]
+[ext_resource type="Script" uid="uid://cwjemrjph2kvx" path="res://scripts/main_camera.gd" id="11_yw0gw"]
+[ext_resource type="PackedScene" uid="uid://blqmphktgeycb" path="res://scenes/eagle/eagle.tscn" id="12_8ql7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rf4v"]
 shader = ExtResource("4_h3lr4")
@@ -355,15 +357,15 @@ _data = {
 }
 point_count = 15
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ql7b"]
-radius = 237.55
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yw0gw"]
+size = Vector2(2322, 1276.5)
 
 [node name="GameArena" type="Node2D" unique_id=749722497]
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=251840684]
+[node name="Sky" type="Parallax2D" parent="." unique_id=251840684]
 z_index = -99
 
-[node name="ColorRect2" type="ColorRect" parent="Parallax2D" unique_id=1400652437]
+[node name="ColorRect2" type="ColorRect" parent="Sky" unique_id=1400652437]
 material = SubResource("ShaderMaterial_1rf4v")
 offset_left = -4674.0
 offset_top = -18411.0
@@ -436,25 +438,25 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/FloatingPath4/StaticBody2D" unique_id=1453547281]
 polygon = PackedVector2Array(3432, -407, 3419.8506, -416.135, 3403.6846, -431.3557, 3366.9922, -472.94855, 3350.311, -495.76782, 3337.3037, -517.56714, 3329.8923, -536.56995, 3330, -551, 3342.958, -560.7877, 3369.7363, -567.51624, 3446.2817, -574.60706, 3549.2886, -579.8685, 3562, -583, 3566.1978, -589.3024, 3570.3303, -599.45087, 3585.9375, -652.3944, 3589.5415, -662.19055, 3593, -668, 3601.7544, -671.0598, 3619.7114, -673.26776, 3673.9685, -673.8689, 3737.2415, -667.2856, 3766.468, -660.51294, 3791, -651, 3810.9844, -632.89856, 3827.8628, -603.2144, 3841.2622, -565.9142, 3850.809, -524.9643, 3856.13, -484.33145, 3856.851, -447.9821, 3852.5989, -419.88275, 3843, -404, 3826.628, -399.48965, 3803.7568, -401.61618, 3747.2283, -418.29773, 3690.8354, -439.08038, 3668.1343, -446.33334, 3652, -449, 3538.5, -422, 3471.5313, -407, 3446.7305, -404.375, 3432, -407)
 
-[node name="FloatingPath5" type="Path2D" parent="FloatingPlatforms" unique_id=1551712521]
+[node name="Boss1Platform2" type="Path2D" parent="FloatingPlatforms" unique_id=1551712521]
 curve = SubResource("Curve2D_dro1d")
 script = ExtResource("7_7s3vq")
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/FloatingPath5" unique_id=422514613]
+[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/Boss1Platform2" unique_id=422514613]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/FloatingPath5/StaticBody2D" unique_id=718844757]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/Boss1Platform2/StaticBody2D" unique_id=718844757]
 polygon = PackedVector2Array(6556, -688, 6551.1616, -699.0403, 6547.8647, -715.60266, 6545.5757, -757.22614, 6548.4985, -796.73663, 6551.717, -810.6576, 6556, -818, 6569.0615, -820.33264, 6595.8574, -820.88165, 6809, -813, 6822.6445, -818.57227, 6836.2188, -832.6406, 6849.1836, -852.3574, 6861, -874.875, 6886, -936, 6966.1113, -938.0714, 7025.625, -936.6428, 7048.3975, -934.1406, 7062, -930, 7068.5547, -916.1515, 7072.55, -887.87646, 7073.5215, -806.8135, 7066.2324, -724.34375, 7059.9023, -694.3103, 7052, -678, 7024.078, -672.3928, 6964.788, -670.692, 6556, -688)
 
-[node name="FloatingPath6" type="Path2D" parent="FloatingPlatforms" unique_id=525254765]
+[node name="Boss1Platform1" type="Path2D" parent="FloatingPlatforms" unique_id=525254765]
 position = Vector2(-26, -46)
 curve = SubResource("Curve2D_pjhtr")
 script = ExtResource("7_7s3vq")
 metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/FloatingPath6" unique_id=444704905]
+[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPlatforms/Boss1Platform1" unique_id=444704905]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/FloatingPath6/StaticBody2D" unique_id=1304665703]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPlatforms/Boss1Platform1/StaticBody2D" unique_id=1304665703]
 polygon = PackedVector2Array(6395, -1115, 6388.3267, -1104.1011, 6383.3887, -1087.5164, 6380.3066, -1066.9133, 6379.202, -1043.9602, 6380.198, -1020.3244, 6383.415, -997.67395, 6388.9756, -977.6765, 6397, -962, 6417.3096, -950.7688, 6455.616, -942.76355, 6562.048, -935.0398, 6667.955, -936.0462, 6705.6064, -938.9536, 6725, -943, 6732.3125, -952.6758, 6737.75, -970.90625, 6743, -1022.25, 6740.75, -1075.4688, 6736.8125, -1096.043, 6731, -1109, 6712.215, -1116.3125, 6673.7188, -1121.75, 6563.75, -1127, 6453.4063, -1124.75, 6414.4414, -1120.8125, 6395, -1115)
 
 [node name="FloatingPath7" type="Path2D" parent="FloatingPlatforms" unique_id=1379244799]
@@ -1019,7 +1021,7 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 polygon = PackedVector2Array(11604, -7853, 11629.839, -7868.564, 11666.206, -7879.079, 11709.145, -7884.8467, 11754.699, -7886.1675, 11798.917, -7883.343, 11837.843, -7876.672, 11867.521, -7866.4575, 11884, -7853, 11893.146, -7832.9336, 11902.477, -7804.785, 11910.503, -7771.6943, 11915.737, -7736.801, 11916.691, -7703.245, 11911.879, -7674.166, 11899.811, -7652.7046, 11879, -7642, 11740.871, -7633.451, 11670.582, -7639.811, 11642.521, -7646.877, 11622, -7657, 11608.939, -7674.4326, 11601.133, -7700.865, 11597.497, -7732.8076, 11596.951, -7766.769, 11604, -7853)
 
 [node name="Player" parent="." unique_id=483951007 instance=ExtResource("7_yw0gw")]
-position = Vector2(13311, -11165)
+position = Vector2(3903, -1155)
 gravity_scale = 4.0
 power_multiplier = 10.0
 max_drag = 200.0
@@ -1086,23 +1088,40 @@ metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
 
 [node name="TriggerEvent" type="Node2D" parent="." unique_id=1152159223]
 
-[node name="EventTrigger" parent="TriggerEvent" unique_id=1322634344 instance=ExtResource("1_8ql7b")]
-position = Vector2(13978, -13893)
-dialog_id = "ending"
+[node name="CameraTrigger" parent="TriggerEvent" unique_id=1164551725 node_paths=PackedStringArray("zone_camera") instance=ExtResource("10_8ql7b")]
+position = Vector2(5259, -828)
+zone_camera = NodePath("../../EventCamera/Boss1")
 
-[node name="CollisionShape2D" parent="TriggerEvent/EventTrigger" index="0" unique_id=463916615]
-shape = SubResource("CircleShape2D_8ql7b")
+[node name="CollisionShape2D" parent="TriggerEvent/CameraTrigger" index="0" unique_id=558228962]
+position = Vector2(35, -428.75)
+shape = SubResource("RectangleShape2D_yw0gw")
 
-[node name="event_trigger" parent="TriggerEvent" unique_id=113825712 instance=ExtResource("1_8ql7b")]
-position = Vector2(4512, -1202)
-dialog_id = "boss_battle_1"
+[node name="MainCamera" type="Camera2D" parent="." unique_id=193157063]
+script = ExtResource("11_yw0gw")
 
-[node name="event_trigger2" parent="TriggerEvent" unique_id=835337025 instance=ExtResource("1_8ql7b")]
-position = Vector2(14558, -11545)
-dialog_id = "boss_battle_3"
+[node name="EventCamera" type="Node2D" parent="." unique_id=1047466096]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=260329777]
-position = Vector2(13112, -11165)
-zoom = Vector2(0.375, 0.375)
+[node name="Boss1" type="Camera2D" parent="EventCamera" unique_id=1641924584]
+position = Vector2(5294, -1247)
+zoom = Vector2(0.5, 0.5)
 
-[editable path="TriggerEvent/EventTrigger"]
+[node name="Boss1" type="Node2D" parent="." unique_id=687725569]
+
+[node name="Eagle" parent="Boss1" unique_id=163709108 node_paths=PackedStringArray("patrol_marker", "ground_marker") instance=ExtResource("12_8ql7b")]
+position = Vector2(5283, -1638)
+patrol_marker = NodePath("../Marker2D")
+ground_marker = NodePath("../Marker2D2")
+base_speed = 300.0
+attack_speed = 400.0
+patrol_distance = 500.0
+detection_range_x = 500.0
+knockback_force = 2000.0
+shockwave_radius = 500.0
+
+[node name="Marker2D" type="Marker2D" parent="Boss1" unique_id=912232796]
+position = Vector2(5277, -1634)
+
+[node name="Marker2D2" type="Marker2D" parent="Boss1" unique_id=1958071646]
+position = Vector2(5264.999, -673.9999)
+
+[editable path="TriggerEvent/CameraTrigger"]

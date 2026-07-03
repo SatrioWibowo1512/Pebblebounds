@@ -6,10 +6,14 @@ extends Area2D
 var has_triggered: bool = false
 
 func _ready() -> void:
+	# 1. Cek data di GameManager saat scene dimuat
+	if trigger_once and dialog_id != "" and GameManager.is_dialog_triggered(dialog_id):
+		queue_free() # Hapus node jika sudah pernah dipicu
+		return
+		
 	body_entered.connect(_on_body_entered)
 
-func _on_body_entered(_body: Node2D) -> void:
-	# Abaikan jika dialog manager sedang sibuk atau area sudah pernah dipicu
+func _on_body_entered(body: Node2D) -> void: # Sebaiknya pastikan yang masuk adalah Player
 	if DialogManager.is_active or (has_triggered and trigger_once):
 		return
 		
@@ -17,6 +21,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		has_triggered = true
 		DialogManager.start_dialog_by_id(dialog_id)
 		
-		# Jika hanya untuk sekali jalan, matikan monitoring area ini
 		if trigger_once:
 			monitoring = false
+			# 2. Simpan status ke GameManager setelah dipicu
+			GameManager.set_dialog_triggered(dialog_id)

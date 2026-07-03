@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://b6b5nfm68dpvq"]
+
+[ext_resource type="Script" uid="uid://sjn2bo2b0m7d" path="res://scenes/Prefabs/floating_path.gd" id="1_io6n1"]
+[ext_resource type="PackedScene" uid="uid://blqmphktgeycb" path="res://scenes/eagle/eagle.tscn" id="2_gdp2e"]
+[ext_resource type="PackedScene" uid="uid://du1mrupsgcmhh" path="res://scenes/player/Player.tscn" id="3_18k7r"]
+[ext_resource type="Script" uid="uid://biy6mlgt4ulq2" path="res://scenes/Prefabs/camera_trigger.gd" id="4_gd78d"]
+[ext_resource type="Script" uid="uid://cwjemrjph2kvx" path="res://scripts/main_camera.gd" id="5_1gx1k"]
+
+[sub_resource type="Curve2D" id="Curve2D_bpk5e"]
+_data = {
+"points": PackedVector2Array(250, 32, -250, -32, 4392, -70, 22, 42, -22, -42, 3899, -593, 25.333334, 49, -25.333334, -49, 3796, -782, -34, 21.166676, 34, -21.166676, 3750, -1038, -54, -26, 54, 26, 4002, -1036, -57.666668, -44.666668, 57.666668, 44.666668, 4151, -704, -208, -2, 208, 2, 4556, -668, -118, -18, 118, 18, 6394, -656, 88, -48, -88, 48, 6675, -181, 66, -54, -66, 54, 6207, -139, 120, -28, -120, 28, 5970, 83, 130, -12, -130, 12, 5532, -43, 172, 0, -172, 0, 5193, 110, 96, 0, -96, 0, 4798, -80, 146, 32, -146, -32, 4392, -70)
+}
+point_count = 15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urony"]
+size = Vector2(2444, 928)
+
+[node name="TestBossBattle" type="Node2D" unique_id=1452732729]
+
+[node name="FloatingPath3" type="Path2D" parent="." unique_id=226081873]
+position = Vector2(-4648, 1302)
+curve = SubResource("Curve2D_bpk5e")
+script = ExtResource("1_io6n1")
+metadata/_custom_type_script = "uid://sjn2bo2b0m7d"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="FloatingPath3" unique_id=1121722390]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FloatingPath3/StaticBody2D" unique_id=1948161993]
+polygon = PackedVector2Array(73, 75, 122, 74, 136, 76, 142, 80, 143, 99)
+
+[node name="Eagle" parent="." unique_id=784865347 node_paths=PackedStringArray("patrol_marker", "ground_marker") instance=ExtResource("2_gdp2e")]
+position = Vector2(1096, 176)
+patrol_marker = NodePath("../Marker2D")
+ground_marker = NodePath("../Marker2D2")
+base_speed = 300.0
+attack_speed = 400.0
+patrol_distance = 700.0
+knockback_force = 2000.0
+shockwave_radius = 500.0
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1546197712]
+position = Vector2(552, -184)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=526280588]
+position = Vector2(612, 636)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=5683075]
+position = Vector2(552, 56)
+enabled = false
+zoom = Vector2(0.4, 0.4)
+
+[node name="Player" parent="." unique_id=483951007 instance=ExtResource("3_18k7r")]
+position = Vector2(-792, 130)
+
+[node name="CameraTrigger" type="Area2D" parent="." unique_id=1164551725 node_paths=PackedStringArray("zone_camera")]
+script = ExtResource("4_gd78d")
+zone_camera = NodePath("../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraTrigger" unique_id=558228962]
+position = Vector2(600, 180)
+shape = SubResource("RectangleShape2D_urony")
+
+[node name="AdvancedTransitionCamera" type="Camera2D" parent="." unique_id=716597877]
+script = ExtResource("5_1gx1k")
+metadata/_custom_type_script = "uid://cwjemrjph2kvx"

@@ -18,11 +18,18 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogManager="*uid://dduy5s46nbmni"
+SignalBus="*uid://css0hywf64gdq"
+SceneManager="*uid://csocfyq5ti47x"
+GameManager="*uid://bc6oyikpc345v"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+player=""
 
 [input]
 

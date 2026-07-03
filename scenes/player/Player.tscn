@@ -18,7 +18,7 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4963295), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Player" type="RigidBody2D" unique_id=483951007]
+[node name="Player" type="RigidBody2D" unique_id=483951007 groups=["player"]]
 physics_material_override = SubResource("PhysicsMaterial_tpg5x")
 gravity_scale = 2.0
 contact_monitor = true

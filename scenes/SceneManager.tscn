@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://csocfyq5ti47x"]
+
+[ext_resource type="Script" uid="uid://o08a1f7p0wj6" path="res://scenes/scene_manager.gd" id="1_k8poj"]
+[ext_resource type="Shader" uid="uid://bok2xmdm7s68" path="res://transition.gdshader" id="2_pmksh"]
+[ext_resource type="Texture2D" uid="uid://dgmx8w5ikjh0f" path="res://assets/player/Pebble_Base.webp" id="3_pukup"]
+[ext_resource type="Texture2D" uid="uid://tbkg4fnsqnid" path="res://assets/player/Pebble_Dizzy.webp" id="4_pukup"]
+[ext_resource type="FontFile" uid="uid://1aqd3ieqij02" path="res://assets/font/MochiyPopOne-Regular.ttf" id="5_s0gh8"]
+
+[sub_resource type="Animation" id="Animation_54oce"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r62be"]
+resource_name = "Loading"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -0.5),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5s22t"]
+_data = {
+&"RESET": SubResource("Animation_54oce"),
+&"loading": SubResource("Animation_r62be")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0gh8"]
+shader = ExtResource("2_pmksh")
+shader_parameter/mask_texture = ExtResource("3_pukup")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/scale = 0.0
+
+[node name="SceneManager" type="CanvasLayer" unique_id=1362536024]
+script = ExtResource("1_k8poj")
+
+[node name="LoadingUI" type="Control" parent="." unique_id=1242665423]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoadingUI" unique_id=172845021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingUI" unique_id=344262230]
+libraries/ = SubResource("AnimationLibrary_5s22t")
+autoplay = &"loading"
+
+[node name="TextureRect" type="TextureRect" parent="LoadingUI" unique_id=1596930035]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -237.0
+offset_right = 153.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(168.33331, 143.33334)
+texture = ExtResource("3_pukup")
+
+[node name="TextureRect2" type="TextureRect" parent="LoadingUI/TextureRect" unique_id=57720199]
+layout_mode = 0
+offset_left = -19.999992
+offset_top = -63.33332
+offset_right = 353.0
+offset_bottom = 309.6667
+texture = ExtResource("4_pukup")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoadingUI" unique_id=676076947]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_right = 117.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_s0gh8")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[wave]Loading..."
+horizontal_alignment = 1
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=352468156]
+material = SubResource("ShaderMaterial_s0gh8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
