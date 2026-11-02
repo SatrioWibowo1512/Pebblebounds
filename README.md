@@ -62,7 +62,7 @@ Berikut beberapa kendala yang sedang dalam tahap perbaikan:
 
 - **Play on itch.io:** [Pebblebound on itch.io](https://ajinurhakim.itch.io/pebblebound)
 - **Pitch Deck:** [View Google Drive Document](https://drive.google.com/file/d/1uQoeH_xslkN2BktyNyA32bGGMQFmwa_O/view?usp=sharing)
-- **Figma Design** [https://www.figma.com/design/YfS4aCkzaZuHNX9hwLu0tm/Pebblebounds-Map-Design?node-id=0-1&t=iDZCc5DBhwk2UwLH-1]
+- **Figma Design** [https://www.figma.com/design/YfS4aCkzaZuHNX9hwLu0tm/Pebblebounds-Map-Design?node-id=0-1&t=iDZCc5DBhwk2UwLH-1](https://www.figma.com/design/YfS4aCkzaZuHNX9hwLu0tm/Pebblebounds-Map-Design?node-id=0-1&t=iDZCc5DBhwk2UwLH-1)
 
 ---
 *Dikembangkan oleh tim **Piknik Kecil (Ukenacis.dev)** untuk GAMESEED 2026.*
