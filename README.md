@@ -2,7 +2,6 @@
 
 > A physics-based rage platformer mobile game about a tiny pebble trying to jump its way back to the mountain peak to reunite with its family.
 
-![Platform](https://img.shields.io/badge/Platform-Mobile%20%7C%20HTML5-brightgreen)
 ![Engine](https://img.shields.io/badge/Engine-Godot%20Engine-blue)
 ![Submission](https://img.shields.io/badge/Event-GAMESEED%202026-orange)
 
